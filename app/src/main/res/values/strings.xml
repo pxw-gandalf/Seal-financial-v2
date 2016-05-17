@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">金融助手v2</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- common -->
+
+    <!-- 主页 -->
+    <string name="home_bar">首页</string>
+
+    <!-- 上传 -->
+    <string name="upload_bar">传输列表</string>
+
+    <!-- 更多 -->
+    <string name="more_bar">更多</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_app_start">AppStartActivity</string>
+
+</resources>
