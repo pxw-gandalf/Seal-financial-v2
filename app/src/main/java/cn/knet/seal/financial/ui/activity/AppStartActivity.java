@@ -9,6 +9,18 @@ import android.view.animation.Animation;
 
 import cn.knet.seal.financial.R;
 
+/**
+ *
+ * 欢迎界面
+ * ClassName: AppStartActivity <br/>
+ * Date: 2016/5/18 15:44 <br/>
+ *
+ * @author: peixinwen@knet.cn
+ * @version: 1.0
+ * @since 1.0
+ * @update:
+ *
+ */
 public class AppStartActivity extends Activity {
 
     @Override
@@ -19,7 +31,7 @@ public class AppStartActivity extends Activity {
         setContentView(view);
 
         AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
-        aa.setDuration(800);
+        aa.setDuration(1000);
         view.startAnimation(aa);
         aa.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -37,7 +49,7 @@ public class AppStartActivity extends Activity {
     }
 
     /**
-     * 跳转到...
+     * 跳转到主页
      */
     private void redirectTo() {
         /*Intent uploadLog = new Intent(this, LogUploadService.class);
@@ -45,5 +57,6 @@ public class AppStartActivity extends Activity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+
     }
 }

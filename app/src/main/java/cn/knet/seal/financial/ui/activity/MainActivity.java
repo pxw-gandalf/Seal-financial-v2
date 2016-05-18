@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.knet.seal.financial.R;
-import cn.knet.seal.financial.Test;
 import cn.knet.seal.financial.ui.fragment.HomeFragment;
 import cn.knet.seal.financial.ui.fragment.MoreFragment;
 import cn.knet.seal.financial.ui.fragment.UploadListFragment;
@@ -22,7 +21,6 @@ import cn.knet.seal.financial.ui.fragment.UploadListFragment;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private String s = Test.print();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         AlphaIndicator alphaIndicator = (AlphaIndicator) findViewById(R.id.alphaIndicator);
         alphaIndicator.setViewPager(viewPager);
     }
-
-
 
     private class MainAdapter extends FragmentPagerAdapter {
 
