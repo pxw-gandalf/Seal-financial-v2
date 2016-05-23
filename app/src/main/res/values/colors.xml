@@ -6,9 +6,11 @@
 
     <!-- common -->
     <!-- 主题色 -->
-    <color name="app_base">#2E7BC9</color>
-    <!-- 分割线 -->
-    <color name="app_stroke">#d5d5d9</color>
+    <color name="base_app">#2E7BC9</color>
+    <!-- 输入框、默认背景色 -->
+    <color name="base_bg">#eeecf3</color>
+    <!-- 边框、分割线 -->
+    <color name="base_stroke">#d5d5d9</color>
 
 
 </resources>

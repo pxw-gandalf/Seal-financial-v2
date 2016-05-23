@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:background="@color/app_base" />
+            android:background="@color/base_app" />
 
     </android.support.design.widget.AppBarLayout>
 

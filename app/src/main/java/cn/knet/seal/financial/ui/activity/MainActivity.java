@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -13,12 +14,27 @@ import com.lzy.widget.AlphaIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.knet.seal.financial.GlobalEvents;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.ui.fragment.HomeFragment;
 import cn.knet.seal.financial.ui.fragment.MoreFragment;
 import cn.knet.seal.financial.ui.fragment.UploadListFragment;
+import cn.knet.seal.financial.util.ToastUtil;
+import de.greenrobot.event.EventBus;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * 主函数，默认加载首页
+ *
+ * ClassName: MainActivity <br/>
+ * Date: 2016/5/19 13:59 <br/>
+ *
+ * @author: peixinwen@knet.cn
+ * @version:
+ * @since 1.0
+ * @update:
+ *
+ */
+public class MainActivity extends BaseActivity {
 
     private Toolbar toolbar;
 
@@ -37,21 +53,24 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setToolBar() {
         // 屏蔽默认标题
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayShowTitleEnabled(false);
+        }
         toolbar.setTitle("金融助手");
     }
-
 
     private void initUI() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new MainAdapter(getSupportFragmentManager()));
+        // 左右滑动时的效果
         AlphaIndicator alphaIndicator = (AlphaIndicator) findViewById(R.id.alphaIndicator);
         alphaIndicator.setViewPager(viewPager);
     }
 
     private class MainAdapter extends FragmentPagerAdapter {
 
-        private List<Fragment> fragments = new ArrayList<>();
+        private final List<Fragment> fragments = new ArrayList<>();
 
         public MainAdapter(FragmentManager fm) {
             super(fm);
@@ -70,5 +89,10 @@ public class MainActivity extends AppCompatActivity {
             return fragments.size();
         }
     }
+
+    public void onEventMainThread(GlobalEvents globalEvents){
+
+    }
+
 
 }

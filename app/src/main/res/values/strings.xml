@@ -3,9 +3,16 @@
     <string name="action_settings">Settings</string>
 
     <!-- common -->
+    <string name="make_dir_error">写入失败，请确定允许SD卡相关权限</string>
 
     <!-- 主页 -->
     <string name="home_bar">首页</string>
+    <string name="login_name_hint">请输入用户名</string>
+    <string name="login_pwd_hint">请输入密码</string>
+    <string name="login_error">登录失败</string>
+    <string name="login">登 录</string>
+    <string name="login_waiting">登录中,请稍后...</string>
+
 
     <!-- 上传 -->
     <string name="upload_bar">传输列表</string>

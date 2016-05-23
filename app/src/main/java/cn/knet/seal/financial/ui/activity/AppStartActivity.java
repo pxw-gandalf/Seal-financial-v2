@@ -2,12 +2,19 @@ package cn.knet.seal.financial.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import cn.knet.seal.financial.Constants;
+import cn.knet.seal.financial.GlobalEvents;
 import cn.knet.seal.financial.R;
+import cn.knet.seal.financial.util.CacheUtils;
+import cn.knet.seal.financial.util.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  *
@@ -22,12 +29,15 @@ import cn.knet.seal.financial.R;
  *
  */
 public class AppStartActivity extends Activity {
+    private CacheUtils cacheUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         final View view = View.inflate(this,R.layout.content_app_start,null);
+        cacheUtils = CacheUtils.get(this);
+
         setContentView(view);
 
         AlphaAnimation aa = new AlphaAnimation(0.5f, 1.0f);
@@ -52,11 +62,17 @@ public class AppStartActivity extends Activity {
      * 跳转到主页
      */
     private void redirectTo() {
-        /*Intent uploadLog = new Intent(this, LogUploadService.class);
-        startService(uploadLog);*/
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        // 判断本地是否有登录缓存
+        String pwd = cacheUtils.getAsString(Constants.PWD);
+        String uid = cacheUtils.getAsString(Constants.UID);
+        String token = cacheUtils.getAsString(Constants.TOKEN);
+        if(!TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(uid) && !TextUtils.isEmpty(token)){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
         finish();
-
     }
 }
