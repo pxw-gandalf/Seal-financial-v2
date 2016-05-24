@@ -1,4 +1,4 @@
-package cn.knet.seal.financial;
+package cn.knet.seal.financial.global;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -26,12 +26,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.knet.seal.financial.util.LogUtil;
-import de.greenrobot.event.EventBus;
 
 /**
  * 捕获全局crash，防止程序崩溃
  *   
- * ClassName: CrashHandler <br/>
+ * ClassName: KnetCrashException <br/>
  * Date: 2016/5/19 15:41 <br/>
  * 
  * @author: peixinwen@knet.cn
@@ -40,13 +39,13 @@ import de.greenrobot.event.EventBus;
  * @update:
  *
  */ 
-public class CrashHandler implements Thread.UncaughtExceptionHandler {
+public class KnetCrashException implements Thread.UncaughtExceptionHandler {
 
     public static final String TAG = "Seal-financial_CrashHandler";
     //系统默认的UncaughtException处理类
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     //CrashHandler实例
-    private static CrashHandler instance;
+    private static KnetCrashException instance;
     //程序的Context对象
     private Context mContext;
     //用来存储设备信息和异常信息
@@ -56,12 +55,12 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
     /** 保证只有一个CrashHandler实例 */
-    private CrashHandler() {}
+    private KnetCrashException() {}
 
     /** 获取CrashHandler实例 ,单例模式 */
-    public static CrashHandler getInstance() {
+    public static KnetCrashException getInstance() {
         if(instance == null)
-            instance = new CrashHandler();
+            instance = new KnetCrashException();
         return instance;
     }
 
@@ -180,7 +179,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             String time = formatter.format(new Date());
             String fileName = "crash-" + time + "-" + timestamp + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String path = Constants.getBaseCacheDir(true) + File.separator + "log";
+                String path = KnetConstants.getBaseCacheDir(true) + File.separator + "log";
                 File dir = new File(path);
                 if (!dir.exists()) {
                     dir.mkdirs();

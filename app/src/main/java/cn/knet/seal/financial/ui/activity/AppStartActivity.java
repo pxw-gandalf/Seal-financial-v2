@@ -2,19 +2,15 @@ package cn.knet.seal.financial.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import cn.knet.seal.financial.Constants;
-import cn.knet.seal.financial.GlobalEvents;
+import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.util.CacheUtils;
-import cn.knet.seal.financial.util.ToastUtil;
-import de.greenrobot.event.EventBus;
 
 /**
  *
@@ -63,9 +59,9 @@ public class AppStartActivity extends Activity {
      */
     private void redirectTo() {
         // 判断本地是否有登录缓存
-        String pwd = cacheUtils.getAsString(Constants.PWD);
-        String uid = cacheUtils.getAsString(Constants.UID);
-        String token = cacheUtils.getAsString(Constants.TOKEN);
+        String pwd = cacheUtils.getAsString(KnetConstants.PWD);
+        String uid = cacheUtils.getAsString(KnetConstants.UID);
+        String token = cacheUtils.getAsString(KnetConstants.TOKEN);
         if(!TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(uid) && !TextUtils.isEmpty(token)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

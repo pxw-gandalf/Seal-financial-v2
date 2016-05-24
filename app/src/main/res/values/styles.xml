@@ -23,4 +23,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="view_line">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/base_stroke</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+    <style name="split_line">
+        <item name="android:background">@color/base_stroke</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
 </resources>

@@ -1,13 +1,14 @@
 package cn.knet.seal.financial;
 
 import android.app.Application;
-import android.text.TextUtils;
 
 import com.lzy.okhttputils.OkHttpUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
+import cn.knet.seal.financial.global.KnetCrashException;
 
 /**
  * Application
@@ -31,7 +32,7 @@ public class KnetFinancialApplication extends Application {
         // 初始化imageLoader
         initUniversalImageLoader();
         // 初始化crash
-        initCrashHandler();
+//        initCrashHandler();
         // 初始化隐藏媒体文件
         initNoMediaFile();
         // 初始化okHttp
@@ -46,7 +47,7 @@ public class KnetFinancialApplication extends Application {
     }
 
     private void initCrashHandler() {
-        CrashHandler catchHandler = CrashHandler.getInstance();
+        KnetCrashException catchHandler = KnetCrashException.getInstance();
         catchHandler.init(getApplicationContext());
     }
 

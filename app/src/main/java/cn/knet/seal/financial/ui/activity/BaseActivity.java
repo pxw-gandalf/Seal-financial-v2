@@ -2,7 +2,7 @@ package cn.knet.seal.financial.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
-import cn.knet.seal.financial.GlobalEvents;
+import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
 
@@ -16,18 +16,22 @@ import de.greenrobot.event.EventBus;
  * @author: peixinwen@knet.cn
  * @version:
  * @update:
- * @since 1.0
+ * @since 3.0
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-    public void onEventMainThread(GlobalEvents globalEvents){
-        if (globalEvents.type == GlobalEvents.COMMON_UI_NET_ERROR){
-            ToastUtil.showToast(globalEvents.obj.toString());
-        }else if (globalEvents.type == GlobalEvents.COMMON_UI_MSG){
-            ToastUtil.showToast(globalEvents.obj.toString());
-        }
+    public void onEventMainThread(StringMsgEvents stringMsgEvents){
+        ToastUtil.showToast(stringMsgEvents.getMsg());
     }
+
+    public void onEvent(StringMsgEvents stringMsgEvents){
+
+    }
+    public void onEventBackgroundThread(){
+
+    }
+
 
     @Override
     protected void onStart() {

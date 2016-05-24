@@ -1,17 +1,13 @@
-package cn.knet.seal.financial.api.callback.test;
+package cn.knet.seal.financial.api.callback;
 
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.lzy.okhttputils.OkHttpUtils;
 import com.lzy.okhttputils.callback.AbsCallback;
 
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-
-import cn.knet.seal.financial.GlobalEvents;
+import cn.knet.seal.financial.global.StringMsgEvents;
 import de.greenrobot.event.EventBus;
 import okhttp3.Response;
 
@@ -49,10 +45,8 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
                 if (clazz != null) return new Gson().fromJson(responseData, clazz);
                 break;
             default:
-                GlobalEvents gl = new GlobalEvents().setType(GlobalEvents.COMMON_UI_NET_ERROR);
-                gl.obj = msg;
-                EventBus.getDefault().post(gl);
-                break;
+                EventBus.getDefault().post(new StringMsgEvents(msg));
+                throw new Exception();
         }
         return null;
     }

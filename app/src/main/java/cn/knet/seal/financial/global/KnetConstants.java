@@ -1,4 +1,4 @@
-package cn.knet.seal.financial;
+package cn.knet.seal.financial.global;
 
 import android.content.Context;
 import android.os.Environment;
@@ -10,7 +10,7 @@ import de.greenrobot.event.EventBus;
 /**
  * 常量辅助类
  *
- * ClassName: Constants <br/>
+ * ClassName: KnetConstants <br/>
  * Date: 2016/5/19 15:08 <br/>
  *
  * @author: peixinwen@knet.cn
@@ -19,13 +19,14 @@ import de.greenrobot.event.EventBus;
  * @update:
  *
  */
-public class Constants {
+public class KnetConstants {
 
     private Context context;
     public static final String TOKEN = "token";
     public static final String UID = "uid";
     public static final String PWD = "pwd";
     public static final String PERMISSION = "permission";
+    public static final String IS_LOGIN = "isLogin";
 
 
     /**
@@ -41,9 +42,7 @@ public class Constants {
             if(createBaseCacheDir()){
                 return Environment.getExternalStorageDirectory() + File.separator + baseCache;
             }else{
-                GlobalEvents gl = new GlobalEvents().setType(GlobalEvents.COMMON_UI_MSG);
-                gl.obj = msg;
-                EventBus.getDefault().post(gl);
+                EventBus.getDefault().post(new StringMsgEvents(msg));
             }
         }
         return Environment.getExternalStorageDirectory() + File.separator + baseCache;

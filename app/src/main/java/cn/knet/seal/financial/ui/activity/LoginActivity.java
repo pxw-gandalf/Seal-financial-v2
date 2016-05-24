@@ -6,7 +6,6 @@ package cn.knet.seal.financial.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,15 +17,16 @@ import android.widget.EditText;
 
 import com.lzy.okhttputils.OkHttpUtils;
 
-import cn.knet.seal.financial.Constants;
-import cn.knet.seal.financial.GlobalEvents;
+import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.api.KnetFinancialHttpApi;
-import cn.knet.seal.financial.api.callback.test.DialogCallback;
-import cn.knet.seal.financial.bean.BaseHeader;
+import cn.knet.seal.financial.api.callback.DialogCallback;
+import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.bean.response.AuthResponse;
+import cn.knet.seal.financial.global.KnetAppManager;
+import cn.knet.seal.financial.global.StringMsgEvents;
+import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
 import cn.knet.seal.financial.util.CacheUtils;
-import cn.knet.seal.financial.util.LogUtil;
 import cn.knet.seal.financial.util.MD5Utils;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -53,9 +53,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
     private EditText mEtLoginPwd;
     //登陆按钮
     private Button mBtnLogin;
+    private DoubleClickExitHelper mDoubleClick;
 
-
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -63,9 +62,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
         setContentView(R.layout.activity_login);
 
         initUI();
+        KnetAppManager.getAppManager().addActivity(this);
     }
 
     protected void initUI() {
+        mDoubleClick = new DoubleClickExitHelper(this);
         mEtLoginMobile = (EditText) findViewById(R.id.et_login_mobile);
         mEtLoginPwd = (EditText) findViewById(R.id.et_login_pwd);
         mBtnLogin = (Button) findViewById(R.id.btn_login);
@@ -105,7 +106,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
         // 登录
         OkHttpUtils.post(KnetFinancialHttpApi.URI_GET_TOKEN)
                 .tag(this)
-                .headers(new BaseHeader().getBaseHeader(this,mobile, MD5Utils.md5(pwd).toLowerCase()))
+                .headers(new BaseHeader().getLoginHeader(this,mobile, MD5Utils.md5(pwd).toLowerCase()))
                 .execute(new DialogCallback<AuthResponse>(LoginActivity.this,AuthResponse.class,
                         getResources().getString(R.string.login_waiting)) {
 
@@ -115,17 +116,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
                         String msg = authResponse.getMsg();
                         String permission = authResponse.getPermission();
                         if(token == null || permission == null){
-                            GlobalEvents gl = new GlobalEvents().setType(GlobalEvents.COMMON_UI_NET_ERROR);
-                            gl.obj = msg;
-                            EventBus.getDefault().post(gl);
+                            EventBus.getDefault().post(new StringMsgEvents(msg));
                         }else{
                             // 缓存
                             CacheUtils cacheUtils = CacheUtils.get(LoginActivity.this);
-                            cacheUtils.put(Constants.TOKEN,token);
-                            cacheUtils.put(Constants.UID,mobile);
-                            cacheUtils.put(Constants.PWD,MD5Utils.md5(pwd).toLowerCase());
-                            cacheUtils.put(Constants.PERMISSION,permission);
-
+                            cacheUtils.put(KnetConstants.TOKEN,token);
+                            cacheUtils.put(KnetConstants.UID,mobile);
+                            cacheUtils.put(KnetConstants.PWD,MD5Utils.md5(pwd).toLowerCase());
+                            cacheUtils.put(KnetConstants.PERMISSION,permission);
+                            cacheUtils.put(KnetConstants.IS_LOGIN,true);
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
                             finish();
                         }
@@ -137,11 +136,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
-            return true;
+            OkHttpUtils.getInstance().cancelTag(this);
+            return mDoubleClick.onKeyDown(keyCode, event);
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }
