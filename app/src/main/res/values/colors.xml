@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#2E7BC9</color>
+    <color name="colorPrimaryDark">#225991</color>
+    <color name="colorAccent">#009688</color>
 
     <!-- common -->
-    <!-- 主题色 -->
-    <color name="base_app">#2E7BC9</color>
-    <!-- 输入框、默认背景色 -->
-    <color name="base_bg">#eeecf3</color>
-    <!-- 边框、分割线 -->
-    <color name="base_stroke">#d5d5d9</color>
-    <!-- 按下颜色 -->
-    <color name="white_pressed">#D9DFE6</color>
+        <!-- 主题色 -->
+        <color name="base_app">#2E7BC9</color>
+        <!-- 输入框、默认背景色 -->
+        <color name="base_bg">#eeecf3</color>
+        <!-- 边框、分割线 -->
+        <color name="base_stroke">#dadada</color>
+        <!-- 按下颜色 -->
+        <color name="white_pressed">#D9DFE6</color>
+        <!-- 文字颜色 -->
+        <color name="text_color">#353535</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

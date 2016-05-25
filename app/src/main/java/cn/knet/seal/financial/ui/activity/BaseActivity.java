@@ -25,18 +25,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         ToastUtil.showToast(stringMsgEvents.getMsg());
     }
 
-    public void onEvent(StringMsgEvents stringMsgEvents){
-
-    }
-    public void onEventBackgroundThread(){
-
-    }
-
 
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override

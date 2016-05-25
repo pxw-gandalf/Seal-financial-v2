@@ -3,6 +3,7 @@ package cn.knet.seal.financial.api.callback;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.Window;
@@ -36,13 +37,16 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
 
     private ProgressDialog dialog;
     private Context context;
+    private LoadingDialogCancelListener cancelListener;
 
     private void initDialog(Activity activity,String msg) {
         context = activity;
+        cancelListener = new LoadingDialogCancelListener();
         dialog = new ProgressDialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setOnCancelListener(cancelListener);
         dialog.setMessage(msg);
     }
 
@@ -79,5 +83,23 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
+        // 处理网络超时等异常
+        if(null != e){
+            if(e.getMessage().contains("Socket closed")){
+                EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.net_cancel)));
+            }else{
+                EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.net_warning)));
+            }
+        }
     }
+
+    private class LoadingDialogCancelListener implements DialogInterface.OnCancelListener{
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            loadingDialogCancel();
+        }
+    }
+
+    public abstract void loadingDialogCancel();
 }

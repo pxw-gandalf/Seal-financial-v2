@@ -5,17 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.MoreModifyPwdActivity">
-    <android.support.design.widget.AppBarLayout
-        android:layout_height="wrap_content"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_more"
         android:layout_width="match_parent"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content"
+        android:background="@color/base_app" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_more"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@color/base_app" />
-
-    </android.support.design.widget.AppBarLayout>
 
 </LinearLayout>

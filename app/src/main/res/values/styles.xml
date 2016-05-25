@@ -1,13 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <!-- 状态栏颜色 5.x + -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- toolbar 颜色 5.x + -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 光标颜色  -->
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 这个设置和上面的NoActionBar主题是一样的效果 -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -26,10 +30,12 @@
     <style name="view_line">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:background">@color/base_stroke</item>
-        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_height">1px</item>
     </style>
+
     <style name="split_line">
         <item name="android:background">@color/base_stroke</item>
         <item name="android:layout_width">match_parent</item>

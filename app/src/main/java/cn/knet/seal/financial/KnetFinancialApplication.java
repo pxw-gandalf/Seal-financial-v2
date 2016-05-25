@@ -36,9 +36,14 @@ public class KnetFinancialApplication extends Application {
         // 初始化隐藏媒体文件
         initNoMediaFile();
         // 初始化okHttp
-        OkHttpUtils.init(this);
-        OkHttpUtils.getInstance().setConnectTimeout(5000);
+        initOkHttp();
 
+
+    }
+
+    private void initOkHttp() {
+        OkHttpUtils.init(this);
+        OkHttpUtils.getInstance().setConnectTimeout(8000);
     }
 
 

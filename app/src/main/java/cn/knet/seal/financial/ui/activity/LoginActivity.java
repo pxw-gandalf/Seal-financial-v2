@@ -27,6 +27,7 @@ import cn.knet.seal.financial.global.KnetAppManager;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
 import cn.knet.seal.financial.util.CacheUtils;
+import cn.knet.seal.financial.util.LogUtil;
 import cn.knet.seal.financial.util.MD5Utils;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -102,13 +103,17 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
             ToastUtil.showToast(getResources().getString(R.string.login_pwd_hint));
             return ;
         }
-
         // 登录
         OkHttpUtils.post(KnetFinancialHttpApi.URI_GET_TOKEN)
-                .tag(this)
+                .tag(TAG)
                 .headers(new BaseHeader().getLoginHeader(this,mobile, MD5Utils.md5(pwd).toLowerCase()))
                 .execute(new DialogCallback<AuthResponse>(LoginActivity.this,AuthResponse.class,
                         getResources().getString(R.string.login_waiting)) {
+
+                    @Override
+                    public void loadingDialogCancel() {
+                        OkHttpUtils.getInstance().cancelTag(TAG);
+                    }
 
                     @Override
                     public void onResponse(boolean isFromCache, AuthResponse authResponse, Request request, @Nullable Response response) {
@@ -136,7 +141,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            OkHttpUtils.getInstance().cancelTag(this);
+//            OkHttpUtils.getInstance().cancelTag(this);
             return mDoubleClick.onKeyDown(keyCode, event);
         }
         return super.onKeyDown(keyCode, event);
