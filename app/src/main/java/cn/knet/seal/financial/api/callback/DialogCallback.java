@@ -14,6 +14,7 @@ import com.lzy.okhttputils.request.BaseRequest;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.global.KnetConstants;
+import cn.knet.seal.financial.global.KnetErrorRequestException;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.util.CacheUtils;
 import cn.knet.seal.financial.util.DeviceUtils;
@@ -60,15 +61,9 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
     public void onBefore(BaseRequest request) {
         super.onBefore(request);
         // 先检查是否有网络
-        if(DeviceUtils.getNetworkType() == 0){
-            EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.net_warning)));
+        if(new DeviceUtils(context).getNetworkType() == 0){
+            EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.common_net_warning)));
             return;
-        }
-        String isLogin = CacheUtils.get(context).getAsString(KnetConstants.IS_LOGIN);
-        if(!TextUtils.isEmpty(isLogin) && isLogin.equals("true")){
-            // 如果登录成功，则网络请求自动加上消息头
-            HttpHeaders httpHeaders = new BaseHeader().getRequestHeader(context);
-            request.headers(httpHeaders);
         }
         //网络请求前显示对话框
         if (dialog != null && !dialog.isShowing()) {
@@ -85,10 +80,19 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
         }
         // 处理网络超时等异常
         if(null != e){
-            if(e.getMessage().contains("Socket closed")){
-                EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.net_cancel)));
-            }else{
-                EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.net_warning)));
+            if(e instanceof KnetErrorRequestException){
+                // 属于正常访问，但是错误请求的异常，直接抛出
+                EventBus.getDefault().post(new StringMsgEvents(e.getMessage()));
+            }else {
+                if(!TextUtils.isEmpty(e.getMessage())){
+                    if(e.getMessage().contains("Socket closed")){
+                        EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.common_net_cancel)));
+                    }else{
+                        EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.common_net_exceptional)));
+                    }
+                }else{
+                    EventBus.getDefault().post(new StringMsgEvents(context.getString(R.string.common_net_exceptional)));
+                }
             }
         }
     }

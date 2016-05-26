@@ -721,7 +721,7 @@ public class DeviceUtils {
      *
      * @return 0：没有网络 1：WIFI网络 2：WAP网络 3：NET网络
      */
-    public static int getNetworkType() {
+    public int getNetworkType() {
         int netType = 0;
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

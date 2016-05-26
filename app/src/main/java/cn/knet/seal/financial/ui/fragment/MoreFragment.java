@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.global.KnetConstants;
+import cn.knet.seal.financial.ui.activity.MoreAboutActivity;
+import cn.knet.seal.financial.ui.activity.MoreHelpActivity;
 import cn.knet.seal.financial.ui.activity.MoreModifyPwdActivity;
 import cn.knet.seal.financial.ui.widget.RoundImageView;
 import cn.knet.seal.financial.util.CacheUtils;
@@ -82,8 +84,10 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_update_check:
                 break;
             case R.id.rl_help:
+                startActivity(new Intent(getActivity(), MoreHelpActivity.class));
                 break;
             case R.id.rl_about:
+                startActivity(new Intent(getActivity(), MoreAboutActivity.class));
                 break;
             case R.id.rl_logout:
                 break;

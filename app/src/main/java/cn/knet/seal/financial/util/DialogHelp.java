@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.style.BulletSpan;
 import android.view.Window;
 
 /**
@@ -74,9 +75,10 @@ public class DialogHelp {
         return builder;
     }
 
-    public static AlertDialog.Builder getConfirmDialog(Context context, String message, DialogInterface.OnClickListener onOkClickListener, DialogInterface.OnClickListener onCancleClickListener) {
+    public static AlertDialog.Builder getConfirmDialog(Context context,String title, String message, DialogInterface.OnClickListener onOkClickListener, DialogInterface.OnClickListener onCancleClickListener) {
         AlertDialog.Builder builder = getDialog(context);
         builder.setMessage(message);
+        builder.setTitle(title);
         builder.setPositiveButton("确定", onOkClickListener);
         builder.setNegativeButton("取消", onCancleClickListener);
         return builder;

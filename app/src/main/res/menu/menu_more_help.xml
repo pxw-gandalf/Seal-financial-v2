@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
-        android:id="@+id/action_notification"
+        android:id="@+id/menu_phone"
         android:icon="@mipmap/phone"
         android:title="@string/more_phone"
         app:showAsAction="ifRoom" />
-
 </menu>

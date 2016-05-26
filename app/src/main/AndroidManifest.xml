@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 拨打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".KnetFinancialApplication"
@@ -22,6 +24,7 @@
             android:theme="@style/Theme.AppStartLoad">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,7 +38,12 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.MoreModifyPwdActivity"/>
+        <activity android:name=".ui.activity.MoreModifyPwdActivity" />
+        <activity
+            android:name=".ui.activity.MoreHelpActivity"
+            android:label="@string/title_activity_more_help"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.activity.MoreAboutActivity"></activity>
     </application>
 
 </manifest>

@@ -21,20 +21,20 @@
                 android:layout_marginBottom="12dp"
                 android:layout_marginTop="12dp"
                 android:background="@mipmap/account_default" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/white"
-                >
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/rl_account_name"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
+                    android:background="@color/white"
                     android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:background="@color/white">
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_account_name_label"
@@ -50,11 +50,11 @@
                         android:id="@+id/tv_account_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
-                        android:textSize="16sp"
+                        android:layout_centerVertical="true"
                         android:maxLength="15"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -64,10 +64,10 @@
                     android:id="@+id/rl_password_modify"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
                     android:background="@drawable/item_press_selector"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_password_modify_label"
@@ -87,16 +87,22 @@
                         android:layout_centerVertical="true"
                         android:background="@mipmap/right_arrow" />
                 </RelativeLayout>
+            </LinearLayout>
 
-                <View style="@style/view_line" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/rl_wifi_only"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
+                    android:background="@drawable/item_press_selector"
                     android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:background="@drawable/item_press_selector">
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_wifi_only_label"
@@ -131,10 +137,10 @@
                     android:id="@+id/rl_update_check"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
                     android:background="@drawable/item_press_selector"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_update_check_label"
@@ -173,10 +179,10 @@
                     android:id="@+id/rl_help"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
                     android:background="@drawable/item_press_selector"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_help_label"
@@ -187,8 +193,7 @@
                         android:layout_centerInParent="true"
                         android:text="@string/more_help"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp"
-                        />
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -204,10 +209,10 @@
                     android:id="@+id/rl_about"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
                     android:background="@drawable/item_press_selector"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp">
 
                     <TextView
                         android:id="@+id/tv_about_label"

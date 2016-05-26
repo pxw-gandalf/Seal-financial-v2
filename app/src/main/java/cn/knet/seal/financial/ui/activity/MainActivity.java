@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity {
             supportActionBar.setDisplayShowTitleEnabled(false);
         }
         toolbar.setTitle("金融助手");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white_pressed));
     }
 
     private void initUI() {
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity {
         // 左右滑动时的效果
         AlphaIndicator alphaIndicator = (AlphaIndicator) findViewById(R.id.alphaIndicator);
         alphaIndicator.setViewPager(viewPager);
+        viewPager.setCurrentItem(0);
     }
 
     private class MainAdapter extends FragmentPagerAdapter {

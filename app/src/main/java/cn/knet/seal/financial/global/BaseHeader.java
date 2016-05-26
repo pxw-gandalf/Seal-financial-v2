@@ -5,6 +5,7 @@ import android.os.Build;
 
 import com.lzy.okhttputils.model.HttpHeaders;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import cn.knet.seal.financial.api.KnetFinancialHttpApi;
@@ -79,6 +80,39 @@ public class BaseHeader extends HttpHeaders {
         return httpHeaders;
     }
 
+    /**
+     * 修改密码时的请求头
+     * @param context
+     * @param p 原始密码
+     * @param np 新密码
+     * @return
+     */
+    public HttpHeaders getUpdateAuthHeadMap(Context context,String p, String np) {
+        String token = CacheUtils.get(context).getAsString(KnetConstants.TOKEN);
+        if (null == token) {
+            return null;
+        }
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.put("token",token);
+        httpHeaders.put("t",String.valueOf(System.currentTimeMillis()));
+        httpHeaders.put("ct",buildct(token, httpHeaders, context));
+        httpHeaders.put("cpt",buildcpt(token, httpHeaders, p, np));
+        httpHeaders.put("np",np);
+        return httpHeaders;
+    }
+
+    private String buildcpt(String token, HttpHeaders httpHeaders, String p, String np) {
+        if ("nubia".equals(Build.MANUFACTURER.toLowerCase())
+                || "vivo".equals(Build.MANUFACTURER.toLowerCase())
+                || "xiaomi".equals(Build.MANUFACTURER.toLowerCase())
+                || "meizu".equals(Build.MANUFACTURER.toLowerCase())
+                || "letv".equals(Build.MANUFACTURER.toLowerCase())) {
+            return MD5Utils.md5(token + p + np + httpHeaders.get(t)).toLowerCase();
+        } else {
+            return api.cpt(token, httpHeaders.get(t), p, np);
+        }
+    }
+
     private String buildpt(String uid, HttpHeaders baseHeader, String p) {
         if ("nubia".equals(Build.MANUFACTURER.toLowerCase())
                 || "vivo".equals(Build.MANUFACTURER.toLowerCase())
@@ -97,9 +131,9 @@ public class BaseHeader extends HttpHeaders {
                 || "xiaomi".equals(Build.MANUFACTURER.toLowerCase())
                 || "meizu".equals(Build.MANUFACTURER.toLowerCase())
                 || "letv".equals(Build.MANUFACTURER.toLowerCase())) {
-            return MD5Utils.md5(token + baseHeader.get(t) + CacheUtils.get(context).getAsString(KnetConstants.PWD)).toLowerCase();
+            return MD5Utils.md5(token + baseHeader.get(t) + CacheUtils.get(context).getAsString(KnetConstants.PWD).toLowerCase()).toLowerCase();
         } else {
-            return api.ct(token,baseHeader.get(t),CacheUtils.get(context).getAsString(KnetConstants.PWD)).toLowerCase();
+            return api.ct(token,baseHeader.get(t),CacheUtils.get(context).getAsString(KnetConstants.PWD).toLowerCase()).toLowerCase();
         }
     }
 }

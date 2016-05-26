@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @version 1.0
  * @since 1.0
  */
-public abstract class BaseResponse implements Serializable {
+public class BaseResponse implements Serializable {
 
     /**
      * 从服务器的响应代码

@@ -3,11 +3,14 @@
     <string name="action_settings">Settings</string>
 
     <!-- common -->
-    <string name="make_dir_error">写入失败，请确定允许SD卡相关权限</string>
-    <string name="loading">加载中,请稍后...</string>
-    <string name="net_warning">网络异常</string>
-    <string name="net_cancel">网络请求已取消</string>
-    <string name="double_click_exit_tip">再次点击退出金融助手</string>
+    <string name="common_make_dir_error">写入失败，请确定允许SD卡相关权限</string>
+    <string name="common_loading">加载中,请稍后...</string>
+    <string name="common_net_warning">当前网络不给力啊</string>
+    <string name="common_net_cancel">网络请求已取消</string>
+    <string name="common_net_exceptional">网络请求异常，请重试</string>
+    <string name="common_double_click_exit_tip">再次点击退出金融助手</string>
+    <string name="common_tip">提示</string>
+    <string name="common_get_statue_err">获取当前登录状态失败，请重新登录</string>
 
     <!-- 主页 -->
     <string name="home_bar">首页</string>
@@ -26,14 +29,36 @@
     <string name="more_name">账户名称</string>
     <string name="more_change_pwd">修改密码</string>
     <string name="more_wifi_only">仅在WiFi下上传</string>
-    <string name="more_check_update">微信号</string>
-    <string name="more_help">二维码名片</string>
-    <string name="more_about">我的地址</string>
+    <string name="more_check_update">检查更新</string>
+    <string name="more_help">帮助</string>
+    <string name="more_about">关于</string>
     <string name="more_logout">退出登录</string>
     <string name="more_phone">电话</string>
+    <string name="more_save">保存</string>
+    <string name="more_normal_pwd">原始密码</string>
+    <string name="more_new_pwd">新密码</string>
+    <string name="more_confirm_pwd">确认密码</string>
+    <string name="more_help_title">下户调查拍照要点</string>
+    <string name="more_help_phone">010-58813333</string>
+    <string name="more_help_tips_1">1.申请人填写申请信息及贷款资料</string>
+    <string name="more_help_tips_2">2.经营场所</string>
+    <string name="more_help_tips_3">3.居住信息</string>
+    <string name="more_help_tips_4">4.工作信息</string>
+    <string name="more_help_tips_content_1">拍摄重点为确认申请表为借款人亲自填写并签字确认，申请人提供资料均为原件。</string>
+    <string name="more_help_tips_content_2">经营场所包括办公地址、厂房和仓库。亲访地址并全程拍摄，核实与申请表填写的经营地址是否完全相符；经营场所环境、经营状态、工作人员数量、主要设备名称和数量等。</string>
+    <string name="more_help_tips_content_3">拍摄重点为居住地址与申请资料提供的地址是否完全相符（门牌号、面积）；在无法提供居住地址证明的情况下，确认居住地址真实、稳定。</string>
+    <string name="more_help_tips_content_4">拍摄重点为确认借款人工作单位、职务的真实性。与其工作单位人事或其他同事核实，详细记录核实人姓名和了解内容。</string>
+    <string name="about_knet_copyright">北龙中网 版权所有</string>
+    <string name="about_knet_copyright2">Copyright©2016 knet.cn All Rights Reserved</string>
+    <string name="more_pwd_length_err">密码长度在6-32个字符之间</string>
+    <string name="more_pwd_compare_err">两次输入密码不一致</string>
+    <string name="more_pwd_success">密码修改成功</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_app_start">AppStartActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_more_help">MoreHelpActivity</string>
 
 </resources>

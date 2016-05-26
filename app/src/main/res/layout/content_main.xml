@@ -18,7 +18,7 @@
     <com.lzy.widget.AlphaIndicator
         android:id="@+id/alphaIndicator"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="48dp"
         android:orientation="horizontal">
         <com.lzy.widget.AlphaView
             android:layout_width="0dp"

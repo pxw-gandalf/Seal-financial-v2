@@ -47,7 +47,7 @@ public class DoubleClickExitHelper {
 		} else {
 			isOnKeyBacking = true;
 			if(mBackToast == null) {
-				mBackToast = Toast.makeText(mActivity, R.string.double_click_exit_tip, Toast.LENGTH_LONG);
+				mBackToast = Toast.makeText(mActivity, R.string.common_double_click_exit_tip, Toast.LENGTH_LONG);
 			}
 			mBackToast.show();
 			mHandler.postDelayed(onBackTimeRunnable, 2000);

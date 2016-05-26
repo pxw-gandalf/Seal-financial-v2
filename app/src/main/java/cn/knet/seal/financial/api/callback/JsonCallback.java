@@ -7,6 +7,7 @@ import com.lzy.okhttputils.callback.AbsCallback;
 
 import org.json.JSONObject;
 
+import cn.knet.seal.financial.global.KnetErrorRequestException;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import de.greenrobot.event.EventBus;
 import okhttp3.Response;
@@ -45,8 +46,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
                 if (clazz != null) return new Gson().fromJson(responseData, clazz);
                 break;
             default:
-                EventBus.getDefault().post(new StringMsgEvents(msg));
-                throw new Exception();
+                throw new KnetErrorRequestException(msg);
         }
         return null;
     }

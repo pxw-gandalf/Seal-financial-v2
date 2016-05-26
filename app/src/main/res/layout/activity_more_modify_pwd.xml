@@ -4,13 +4,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.MoreModifyPwdActivity">
+    tools:context=".ui.activity.MoreModifyPwdActivity"
+    android:background="@color/base_bg"
+    >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_more"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/base_app" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+            <TextView
+                android:text="@string/more_normal_pwd"
+                android:textColor="@color/text_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_normal_pwd"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:hint="@string/more_normal_pwd"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:maxLength="32"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+            <TextView
+                android:text="@string/more_new_pwd"
+                android:textColor="@color/text_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_new_pwd"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="match_parent"
+                android:hint="@string/more_new_pwd"
+                android:inputType="textPassword"
+                android:maxLength="32"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+            <TextView
+                android:text="@string/more_confirm_pwd"
+                android:textColor="@color/text_color"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_confirm_pwd"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="match_parent"
+                android:hint="@string/more_confirm_pwd"
+                android:inputType="textPassword"
+                android:maxLength="32"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -129,7 +129,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
                             cacheUtils.put(KnetConstants.UID,mobile);
                             cacheUtils.put(KnetConstants.PWD,MD5Utils.md5(pwd).toLowerCase());
                             cacheUtils.put(KnetConstants.PERMISSION,permission);
-                            cacheUtils.put(KnetConstants.IS_LOGIN,true);
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
                             finish();
                         }
