@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.text.style.BulletSpan;
 import android.view.Window;
 
+import cn.knet.seal.financial.R;
+
 /**
  * 统一的弹框处理
  * 使用系统dialog
@@ -67,18 +69,19 @@ public class DialogHelp {
         return getMessageDialog(context, message, null);
     }
 
-    public static AlertDialog.Builder getConfirmDialog(Context context, String message, DialogInterface.OnClickListener onClickListener) {
+    public static AlertDialog.Builder getConfirmDialog(Context context,String title, String message, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = getDialog(context);
+        builder.setTitle(title);
         builder.setMessage(Html.fromHtml(message));
         builder.setPositiveButton("确定", onClickListener);
         builder.setNegativeButton("取消", null);
         return builder;
     }
 
-    public static AlertDialog.Builder getConfirmDialog(Context context,String title, String message, DialogInterface.OnClickListener onOkClickListener, DialogInterface.OnClickListener onCancleClickListener) {
+    public static AlertDialog.Builder getConfirmDialog(Context context,String message, DialogInterface.OnClickListener onOkClickListener, DialogInterface.OnClickListener onCancleClickListener) {
         AlertDialog.Builder builder = getDialog(context);
         builder.setMessage(message);
-        builder.setTitle(title);
+        builder.setTitle(context.getString(R.string.common_tip));
         builder.setPositiveButton("确定", onOkClickListener);
         builder.setNegativeButton("取消", onCancleClickListener);
         return builder;

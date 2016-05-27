@@ -24,12 +24,12 @@ public class KnetFinancialHttpApi {
     // 支持移动网络接口
 //     private static final String DOMAIN = "http://" + "202.173.14.69:9912" + "/";
     // 20160216 测试主干地址
-//    private static final String DOMAIN = "http://" + "192.168.249.7:9912" + "/";
+    private static final String DOMAIN = "http://" + "192.168.249.7:9912" + "/";
     // 20160216 测试分支
     // 分支1
 //    private static final String DOMAIN = "http://" + "192.168.249.48:9812" + "/";
     // 分支2
-    private static final String DOMAIN = "http://" + "192.168.249.7:9912" + "/";
+//    private static final String DOMAIN = "http://" + "192.168.249.7:9912" + "/";
 
 //    private static final String DOMAIN = "192.168.100.90:8080";
 

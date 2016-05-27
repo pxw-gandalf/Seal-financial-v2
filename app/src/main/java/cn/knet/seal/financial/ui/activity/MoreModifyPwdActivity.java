@@ -19,6 +19,7 @@ import cn.knet.seal.financial.api.KnetFinancialHttpApi;
 import cn.knet.seal.financial.api.callback.DialogCallback;
 import cn.knet.seal.financial.bean.response.BaseResponse;
 import cn.knet.seal.financial.global.BaseHeader;
+import cn.knet.seal.financial.global.KnetAppManager;
 import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.util.CacheUtils;
@@ -28,7 +29,7 @@ import de.greenrobot.event.EventBus;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MoreModifyPwdActivity extends AppCompatActivity {
+public class MoreModifyPwdActivity extends BaseActivity {
     private final String TAG = this.getClass().getSimpleName();
 
     private EditText mNormalPwd;
@@ -39,7 +40,7 @@ public class MoreModifyPwdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_modify_pwd);
-
+        KnetAppManager.getAppManager().addActivity(this);
         initUI();
     }
 
@@ -132,8 +133,13 @@ public class MoreModifyPwdActivity extends AppCompatActivity {
                             if(null != baseResponse){
                                 EventBus.getDefault().post(new StringMsgEvents(getString(R.string.more_pwd_success)));
                                 // 设置登录标识为false
+                                CacheUtils.get(MoreModifyPwdActivity.this).remove(KnetConstants.TOKEN);
+                                CacheUtils.get(MoreModifyPwdActivity.this).remove(KnetConstants.UID);
+                                CacheUtils.get(MoreModifyPwdActivity.this).remove(KnetConstants.PWD);
+                                CacheUtils.get(MoreModifyPwdActivity.this).remove(KnetConstants.PERMISSION);
                                 startActivity(new Intent(MoreModifyPwdActivity.this,LoginActivity.class));
-                                finish();
+                                KnetAppManager.getAppManager().finishAllActivity();
+                                MoreModifyPwdActivity.this.finish();
                             }
                         }
                     });

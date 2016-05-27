@@ -462,7 +462,7 @@ public class DeviceUtils {
      * 获取版本号
      * @return 版本号
      */
-    public static int getVersionCode() {
+    public int getVersionCode() {
         int versionCode = 0;
         try {
             versionCode = context.getPackageManager()
@@ -490,7 +490,7 @@ public class DeviceUtils {
         return versionCode;
     }
 
-    public static String getVersionName() {
+    public String getVersionName() {
         String name = "";
         try {
             name = context.getPackageManager()

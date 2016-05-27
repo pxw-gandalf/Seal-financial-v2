@@ -59,7 +59,7 @@ public class MoreHelpActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.menu_phone){
             final String phone = getString(R.string.more_help_phone);
-            DialogHelp.getConfirmDialog(this, getString(R.string.common_tip),phone, new DialogInterface.OnClickListener() {
+            DialogHelp.getConfirmDialog(this, phone, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Uri uri = Uri.parse("tel:" + phone);

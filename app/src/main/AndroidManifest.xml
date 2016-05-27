@@ -43,7 +43,11 @@
             android:name=".ui.activity.MoreHelpActivity"
             android:label="@string/title_activity_more_help"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.activity.MoreAboutActivity"></activity>
+        <activity android:name=".ui.activity.MoreAboutActivity" />
+
+
+        <service android:name=".service.DownloadService" />
+
     </application>
 
 </manifest>

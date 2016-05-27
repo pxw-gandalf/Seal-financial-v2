@@ -42,11 +42,18 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        KnetAppManager.getAppManager().addActivity(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setToolBar();
         initUI();
-        KnetAppManager.getAppManager().addActivity(this);
+        // 检查是否有待上传数据
+        checkUnUploadData();
+
+    }
+
+    private void checkUnUploadData() {
+
     }
 
     /**
