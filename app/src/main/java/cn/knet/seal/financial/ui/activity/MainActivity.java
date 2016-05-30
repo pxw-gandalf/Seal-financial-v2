@@ -1,5 +1,7 @@
 package cn.knet.seal.financial.ui.activity;
 
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,18 +10,25 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 
 import com.lzy.widget.AlphaIndicator;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.knet.seal.financial.R;
+import cn.knet.seal.financial.bean.UploadState;
+import cn.knet.seal.financial.bean.UploadTask;
+import cn.knet.seal.financial.db.UploadDBHelper;
 import cn.knet.seal.financial.global.KnetAppManager;
+import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.ui.fragment.HomeFragment;
 import cn.knet.seal.financial.ui.fragment.MoreFragment;
 import cn.knet.seal.financial.ui.fragment.UploadListFragment;
 import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
+import cn.knet.seal.financial.util.DialogHelp;
 
 /**
  * 主函数，默认加载首页
@@ -37,6 +46,7 @@ public class MainActivity extends BaseActivity {
 
     private Toolbar toolbar;
     private DoubleClickExitHelper mDoubleClick;
+    private UploadDBHelper mUploadDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +57,26 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         setToolBar();
         initUI();
+
         // 检查是否有待上传数据
         checkUnUploadData();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     private void checkUnUploadData() {
+        mUploadDBHelper = new UploadDBHelper(this, KnetConstants.DB_NAME);
+        if(mUploadDBHelper.queryUnDownloaded().size() > 0){
+            DialogHelp.getConfirmDialog(this, getString(R.string.home_exit_unUpload_task), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
+                }
+            },null).show();
+        }
     }
 
     /**

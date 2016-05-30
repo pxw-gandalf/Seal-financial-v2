@@ -31,7 +31,7 @@ public class ToastUtil {
 	}
 	   public static void showToast(String text){
 	        if(toast == null){
-	            toast = Toast.makeText(KnetFinancialApplication.getInstance().getBaseContext(), text,
+	            toast = Toast.makeText(KnetFinancialApplication.context(), text,
 						Toast.LENGTH_SHORT);
 	        }
 	        toast.setText(text);

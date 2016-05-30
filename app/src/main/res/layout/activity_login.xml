@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/base_bg">
 
     <ImageView
         android:id="@+id/iv_login_logo"
@@ -107,15 +107,13 @@
             android:background="#fff"
             android:hint="@string/login_pwd_hint" />
     </RelativeLayout>
-	<Button 
-	    android:id="@+id/btn_login"
-	    android:layout_below="@id/rl_login_pwd"
-	    android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <com.rey.material.widget.Button
+        android:id="@+id/btn_login"
+        android:layout_below="@id/rl_login_pwd"
+        style="@style/LightFlatWaveButtonRippleStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:layout_margin="15dp"
-        android:background="@drawable/btn_press"
-        android:textColor="#fff"
-        android:textSize="18sp"
         android:text="@string/login"
-	    />
+        app:rd_enable="true"/>
 </RelativeLayout>

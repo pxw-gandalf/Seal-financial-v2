@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Seal-financial-v2.iml" filepath="$PROJECT_DIR$/Seal-financial-v2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okhttpserver/okhttpserver.iml" filepath="$PROJECT_DIR$/okhttpserver/okhttpserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
     </modules>
   </component>
 </project>

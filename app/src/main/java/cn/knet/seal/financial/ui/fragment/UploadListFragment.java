@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.yalantis.phoenix.PullToRefreshView;
+
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.ui.adapter.MyItemRecyclerViewAdapter;
 import cn.knet.seal.financial.ui.fragment.dummy.DummyContent;
@@ -28,6 +30,7 @@ public class UploadListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private PullToRefreshView mPullToRefreshView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -71,6 +74,20 @@ public class UploadListFragment extends Fragment {
             }
             recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
+
+        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.ptf_upload_list);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, 1500);
+            }
+        });
+
         return view;
     }
 

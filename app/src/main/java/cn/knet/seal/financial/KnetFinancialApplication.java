@@ -1,6 +1,7 @@
 package cn.knet.seal.financial;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.lzy.okhttputils.OkHttpUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -23,12 +24,12 @@ import cn.knet.seal.financial.global.KnetCrashException;
 public class KnetFinancialApplication extends Application {
     
     private static final String TAG = KnetFinancialApplication.class.getSimpleName();
-    private static KnetFinancialApplication knetFinancialApplication;
+    static Context _context;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        knetFinancialApplication = this;
+        _context = getApplicationContext();
         // 初始化imageLoader
         initUniversalImageLoader();
         // 初始化crash
@@ -66,8 +67,8 @@ public class KnetFinancialApplication extends Application {
         ImageLoader.getInstance().init(config.build());
     }
 
-    public static KnetFinancialApplication getInstance(){
-        return knetFinancialApplication;
+    public static synchronized KnetFinancialApplication context() {
+        return (KnetFinancialApplication) _context;
     }
 
 }
