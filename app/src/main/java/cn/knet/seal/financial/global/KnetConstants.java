@@ -29,6 +29,13 @@ public class KnetConstants {
     public static final String IS_LOGIN = "isLogin";
     public static final String DB_NAME = "upload.db";
 
+    /** 首页头部 */
+    public static final int VIEW_TYPE_HOME_HEADER = 0x4B000001;
+    /** 首页操作区 */
+    public static final int VIEW_TYPE_HOME_OPERATE = 0x4B000002;
+    /** 下户列表 */
+    public static final int VIEW_TYPE_HOME_LIST = 0x4B000003;
+
 
     /**
      * 获取项目根cache目录，位于外置存储

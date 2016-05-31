@@ -13,10 +13,9 @@
         android:name="cn.knet.seal.financial.ui.fragment.ItemFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         app:layoutManager="LinearLayoutManager"
         tools:context=".ui.fragment.UploadListFragment"
-        tools:listitem="@layout/fragment_list_item" />
+        tools:listitem="@layout/fragment_upload_list_item" />
 
     </com.yalantis.phoenix.PullToRefreshView>
 

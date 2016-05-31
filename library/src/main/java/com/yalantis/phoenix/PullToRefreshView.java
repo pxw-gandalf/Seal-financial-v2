@@ -421,5 +421,8 @@ public class PullToRefreshView extends ViewGroup {
         void onRefresh();
     }
 
+    public void setAutoRefresh(){
+        setRefreshing(true,true);
+    }
 }
 

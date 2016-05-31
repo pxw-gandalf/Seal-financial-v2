@@ -3,7 +3,7 @@
  */
 package cn.knet.seal.financial.bean.response;
 
-import java.io.Serializable;
+import cn.knet.seal.financial.bean.KnetBaseBean;
 
 /**
  * 基本响应类
@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @version 1.0
  * @since 1.0
  */
-public class BaseResponse implements Serializable {
+public class BaseResponse extends KnetBaseBean {
 
     /**
      * 从服务器的响应代码

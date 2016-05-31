@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/base_bg"
     tools:context="cn.knet.seal.financial.ui.fragment.HomeFragment">
 
     <com.yalantis.phoenix.PullToRefreshView
@@ -10,16 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ListView
-                android:id="@+id/list_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@null"
-                android:dividerHeight="0dp" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".ui.fragment.HomeFragment"
+            tools:listitem="@layout/fragment_upload_list_item" />
 
     </com.yalantis.phoenix.PullToRefreshView>
 

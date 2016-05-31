@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/item_press_selector"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/tv_review_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="17sp"
+                android:textColor="#333"
+                android:text="@string/common_long_test_word" />
+
+            <TextView
+                android:id="@+id/tv_review_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:textColor="#888"
+                android:text="@string/common_long_test_word" />
+
+            <TextView
+                android:id="@+id/tv_review_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:textColor="#888"
+                android:text="@string/common_long_test_word" />
+        </LinearLayout>
+
+        <com.rey.material.widget.Button
+            style="@style/LightFlatWaveButtonRippleStyle"
+            android:id="@+id/bt_review_order_take"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/review_take_order"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/split_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_review_bank_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_review_bank_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="9dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_bank_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#888"
+                android:textSize="14sp"
+                android:layout_marginRight="9dp" />
+
+            <ImageView
+                android:id="@+id/iv_review_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/arrow_down" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

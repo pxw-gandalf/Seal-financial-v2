@@ -100,6 +100,7 @@ public class MainActivity extends BaseActivity {
         AlphaIndicator alphaIndicator = (AlphaIndicator) findViewById(R.id.alphaIndicator);
         alphaIndicator.setViewPager(viewPager);
         viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
     }
 
     private class MainAdapter extends FragmentPagerAdapter {
