@@ -72,6 +72,7 @@ public class BaseHeader extends HttpHeaders {
      * @return
      */
     public HttpHeaders getRequestHeader(Context context){
+        api = new KnetFinancialHttpApi();
         HttpHeaders httpHeaders = new HttpHeaders();
         String token = CacheUtils.get(context).getAsString("token");
         httpHeaders.put("token",token);

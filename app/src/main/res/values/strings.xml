@@ -25,7 +25,13 @@
 
     <!-- 下户 -->
     <string name="review_take_order">接单</string>
+    <string name="review_title">下户</string>
 
+    <!-- 进度 -->
+    <string name="schedule_title">进度</string>
+
+    <!-- 物流 -->
+    <string name="wuliu_title">物流</string>
 
     <!-- 上传 -->
     <string name="upload_bar">传输列表</string>

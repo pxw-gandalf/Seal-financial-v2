@@ -23,6 +23,7 @@
             android:theme="@style/Theme.AppStartLoad">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -42,9 +43,9 @@
             android:label="@string/title_activity_more_help" />
         <activity android:name=".ui.activity.MoreAboutActivity" />
 
-
         <service android:name=".service.DownloadService" />
 
+        <activity android:name=".ui.activity.ReviewSealBaseInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -57,6 +57,14 @@
             android:layout_gravity="center_vertical"
             android:text="@string/review_take_order"
             android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/iv_reviewed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/reviewed"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 

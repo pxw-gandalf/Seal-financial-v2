@@ -8,7 +8,7 @@ import de.greenrobot.event.EventBus;
 
 /**
  * activity基类
- * 处理全局的eventBus
+ * 处理全局的eventBus,只处理了消息类
  *
  * ClassName: BaseActivity <br/>
  * Date: 2016/5/23 18:52 <br/>
@@ -20,11 +20,9 @@ import de.greenrobot.event.EventBus;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     public void onEventMainThread(StringMsgEvents stringMsgEvents){
         ToastUtil.showToast(stringMsgEvents.getMsg());
     }
-
 
     @Override
     protected void onStart() {
