@@ -115,20 +115,15 @@
                         android:textColor="@color/text_color"
                         android:textSize="16sp" />
 
-                    <Switch
+                    <com.rey.material.widget.Switch
                         android:id="@+id/st_more_wifi_only"
-                        android:layout_width="fill_parent"
+                        style="@style/Material.Widget.Switch"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:checked="true"
-                        android:switchMinWidth="70dp"
-                        android:switchPadding="1dp"
-                        android:textOff="   "
-                        android:textOn="   "
-                        android:thumb="@mipmap/btn_switch_thumb"
-                        android:track="@drawable/btn_switch" />
-
+                        android:gravity="center"
+                        android:checked="true"/>
                 </RelativeLayout>
 
                 <View style="@style/view_line" />

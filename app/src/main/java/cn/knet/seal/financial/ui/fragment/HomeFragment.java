@@ -19,11 +19,14 @@ import java.util.List;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.api.KnetFinancialHttpApi;
 import cn.knet.seal.financial.api.callback.NormalCallback;
+import cn.knet.seal.financial.bean.KnetBaseBean;
 import cn.knet.seal.financial.bean.request.ReviewListRequest;
 import cn.knet.seal.financial.bean.response.ReviewInfo;
 import cn.knet.seal.financial.bean.response.ReviewListResponse;
 import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.global.MyItemClickListener;
+import cn.knet.seal.financial.global.ObjectMsgEvent;
+import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.ui.activity.ReviewSealBaseInfoActivity;
 import cn.knet.seal.financial.ui.adapter.HomeAdapter;
 import cn.knet.seal.financial.ui.widget.DividerItemDecoration;
@@ -111,8 +114,9 @@ public class HomeFragment extends Fragment {
                             mHomeAdapter.setOnItemClickListener(new MyItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-                                    ToastUtil.showToast(position + "--->" + ((ReviewInfo) view.getTag()).getUnitName());
-//                                    EventBus.getDefault().register(new ReviewSealBaseInfoActivity());
+                                    // 对于在后创建的类中，要先进行注册
+                                    EventBus.getDefault().register(new ReviewSealBaseInfoActivity());
+                                    EventBus.getDefault().post(new ObjectMsgEvent((KnetBaseBean) view.getTag()));
                                     startActivity(new Intent(getActivity(),ReviewSealBaseInfoActivity.class));
                                 }
                             });

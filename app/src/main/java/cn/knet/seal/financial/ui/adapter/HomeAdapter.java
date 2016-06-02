@@ -40,13 +40,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int minHeight;
     private List<ReviewInfo> reviewList;
     private MyItemClickListener mItemClickListener;
-    DisplayImageOptions options = new DisplayImageOptions.Builder()
-            .showImageOnLoading(R.mipmap.moren)                    //加载时的状态
-            .showImageForEmptyUri(R.mipmap.moren)                  //网络链接失败
-            .showImageOnFail(R.mipmap.moren)                       //加载失败时
-            .cacheInMemory(true)                                        //是否在内存中缓存
-            .cacheOnDisk(true)                                          //是否缓存在SD卡
-            .considerExifParams(true).build();                     //自动辨认图片方向（如倒置手机时）
+
 
     public HomeAdapter(List<ReviewInfo> mReviewList, Activity activity) {
         this.reviewList = mReviewList;
@@ -164,7 +158,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 TextView tvCompany = (TextView) childView.findViewById(R.id.tv_bank_name);
                 TextView tvReviewStatus = (TextView) childView.findViewById(R.id.tv_review_status);
                 tvReviewStatus.setText(ReviewStatusEnum.get(reviewInfo.getBankList().get(i).getBankReviewStatus()).getText());
-                ImageLoader.getInstance().displayImage(reviewInfo.getBankList().get(i).getLogoUrl(), ivIcon, options);
+                ImageLoader.getInstance().displayImage(reviewInfo.getBankList().get(i).getLogoUrl(), ivIcon, KnetConstants.options);
                 tvCompany.setText(reviewInfo.getBankList().get(i).getBankName());
                 holder.llReviewBankContainer.addView(childView);
             }

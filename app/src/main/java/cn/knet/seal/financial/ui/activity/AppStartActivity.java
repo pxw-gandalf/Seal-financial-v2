@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.R;
+import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.util.CacheUtils;
 
 /**

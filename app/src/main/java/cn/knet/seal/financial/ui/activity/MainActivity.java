@@ -1,7 +1,6 @@
 package cn.knet.seal.financial.ui.activity;
 
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,17 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.WindowManager;
 
 import com.lzy.widget.AlphaIndicator;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.knet.seal.financial.R;
-import cn.knet.seal.financial.bean.UploadState;
-import cn.knet.seal.financial.bean.UploadTask;
 import cn.knet.seal.financial.db.UploadDBHelper;
 import cn.knet.seal.financial.global.KnetAppManager;
 import cn.knet.seal.financial.global.KnetConstants;
@@ -53,13 +48,16 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         KnetAppManager.getAppManager().addActivity(this);
+        initUI();
+        // 检查是否有待上传数据
+        checkUnUploadData();
+    }
+
+    @Override
+    void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setToolBar();
-        initUI();
-
-        // 检查是否有待上传数据
-        checkUnUploadData();
     }
 
     @Override

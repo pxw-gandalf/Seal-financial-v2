@@ -1,16 +1,13 @@
 package cn.knet.seal.financial.ui.activity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -43,11 +40,11 @@ public class MoreModifyPwdActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_modify_pwd);
         KnetAppManager.getAppManager().addActivity(this);
-        initUI();
     }
 
-    private void initUI() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_more);
+    @Override
+    void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -64,7 +61,6 @@ public class MoreModifyPwdActivity extends BaseActivity {
         mNormalPwd = (EditText) findViewById(R.id.et_normal_pwd);
         mNewPwd = (EditText) findViewById(R.id.et_new_pwd);
         mConfirmPwd = (EditText) findViewById(R.id.et_confirm_pwd);
-
     }
 
     @Override

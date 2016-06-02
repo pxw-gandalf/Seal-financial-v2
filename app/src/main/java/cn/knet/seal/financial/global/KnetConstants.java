@@ -3,8 +3,11 @@ package cn.knet.seal.financial.global;
 import android.content.Context;
 import android.os.Environment;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+
 import java.io.File;
 
+import cn.knet.seal.financial.R;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -20,6 +23,14 @@ import de.greenrobot.event.EventBus;
  *
  */
 public class KnetConstants {
+
+    public static DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.mipmap.moren)                    //加载时的状态
+            .showImageForEmptyUri(R.mipmap.moren)                  //网络链接失败
+            .showImageOnFail(R.mipmap.moren)                       //加载失败时
+            .cacheInMemory(true)                                   //是否在内存中缓存
+            .cacheOnDisk(true)                                     //是否缓存在SD卡
+            .considerExifParams(true).build();                     //自动辨认图片方向（如倒置手机时）
 
     private Context context;
     public static final String TOKEN = "token";

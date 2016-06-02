@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/item_press_selector"
+    android:minHeight="45dp"
+    android:onClick="getDetail"
+    >
+    <View
+        style="@style/split_line"/>
+
+    <ImageView
+        android:id="@+id/iv_bank_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+         />
+
+    <TextView
+        android:id="@+id/tv_bank_name"
+        android:layout_toRightOf="@+id/iv_bank_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_centerVertical="true"
+        android:text="@string/common_short_test_word"
+        android:textColor="#333"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_review_status"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/common_short_test_word"
+        android:textColor="#3C94EF"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:id="@+id/bt_review"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/button_shape_normal"
+        android:text="@string/review_wait"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        />
+</RelativeLayout>

@@ -26,6 +26,8 @@
     <!-- 下户 -->
     <string name="review_take_order">接单</string>
     <string name="review_title">下户</string>
+    <string name="review_base_info">基本信息</string>
+    <string name="review_wait">待下户</string>
 
     <!-- 进度 -->
     <string name="schedule_title">进度</string>

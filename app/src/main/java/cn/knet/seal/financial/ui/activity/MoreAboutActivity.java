@@ -19,17 +19,17 @@ import cn.knet.seal.financial.R;
  * @update:
  *
  */
-public class MoreAboutActivity extends AppCompatActivity {
+public class MoreAboutActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_about);
-        initUI();
     }
 
-    private void initUI() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_about);
+    @Override
+    void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle(getString(R.string.more_about));
@@ -42,4 +42,5 @@ public class MoreAboutActivity extends AppCompatActivity {
             }
         });
     }
+
 }

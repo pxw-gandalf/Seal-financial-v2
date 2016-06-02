@@ -3,6 +3,7 @@
  */
 package cn.knet.seal.financial.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,17 +18,16 @@ import android.widget.EditText;
 
 import com.lzy.okhttputils.OkHttpUtils;
 
-import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.api.KnetFinancialHttpApi;
 import cn.knet.seal.financial.api.callback.DialogCallback;
-import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.bean.response.AuthResponse;
+import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.global.KnetAppManager;
+import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
 import cn.knet.seal.financial.util.CacheUtils;
-import cn.knet.seal.financial.util.LogUtil;
 import cn.knet.seal.financial.util.MD5Utils;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -44,7 +44,7 @@ import okhttp3.Response;
  * @version 1.0
  * @since 1.0
  */
-public class LoginActivity extends BaseActivity implements OnClickListener{
+public class LoginActivity extends Activity implements OnClickListener{
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 

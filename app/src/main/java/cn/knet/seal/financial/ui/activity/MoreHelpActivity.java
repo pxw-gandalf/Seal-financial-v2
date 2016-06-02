@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,17 +24,16 @@ import cn.knet.seal.financial.util.DialogHelp;
  * @update:
  *
  */
-public class MoreHelpActivity extends AppCompatActivity {
+public class MoreHelpActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_help);
-        initUI();
     }
-
-    private void initUI() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_more);
+    @Override
+    void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle(getString(R.string.more_help));
@@ -48,7 +46,6 @@ public class MoreHelpActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_more_help, menu);
