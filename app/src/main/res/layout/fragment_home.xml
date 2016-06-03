@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
             tools:context=".ui.fragment.HomeFragment"
-            tools:listitem="@layout/fragment_upload_list_item" />
+            />
 
     </com.yalantis.phoenix.PullToRefreshView>
 

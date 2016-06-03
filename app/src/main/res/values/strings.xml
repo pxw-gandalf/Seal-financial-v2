@@ -28,6 +28,12 @@
     <string name="review_title">下户</string>
     <string name="review_base_info">基本信息</string>
     <string name="review_wait">待下户</string>
+    <string name="review_pics">下户照片</string>
+    <string name="review_audio">下户录音</string>
+    <string name="review_video">下户视频</string>
+    <string name="review_remark">下户建议</string>
+    <string name="review_file_list">下户资料</string>
+    <string name="review_waite_mark">(待录入)</string>
 
     <!-- 进度 -->
     <string name="schedule_title">进度</string>

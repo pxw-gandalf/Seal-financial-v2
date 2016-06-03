@@ -40,7 +40,7 @@
         android:textColor="#3C94EF"
         android:textSize="14sp"
         />
-    <TextView
+<!--    <TextView
         android:id="@+id/bt_review"
         android:gravity="center"
         android:layout_alignParentRight="true"
@@ -52,5 +52,5 @@
         android:textSize="14sp"
         android:layout_width="64dp"
         android:layout_height="32dp"
-        />
+        />-->
 </RelativeLayout>

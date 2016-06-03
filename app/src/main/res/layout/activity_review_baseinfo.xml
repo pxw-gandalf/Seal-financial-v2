@@ -160,16 +160,15 @@
             android:src="@mipmap/phone" />
     </RelativeLayout>
 
-    <View
-        style="@style/view_line" >
-    </View>
-
     <LinearLayout
         android:id="@+id/ll_review_comments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:visibility="gone" >
+        <View
+            style="@style/view_line" >
+        </View>
 
         <ImageView
             android:layout_width="wrap_content"

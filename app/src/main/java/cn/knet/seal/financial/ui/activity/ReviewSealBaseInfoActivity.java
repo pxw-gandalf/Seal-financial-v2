@@ -108,14 +108,12 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
                 ImageView icon = (ImageView) bankListView.findViewById(R.id.iv_bank_icon);
                 TextView bankName = (TextView) bankListView.findViewById(R.id.tv_bank_name);
                 TextView status = (TextView) bankListView.findViewById(R.id.tv_review_status);
-                TextView review = (TextView) bankListView.findViewById(R.id.bt_review);
+//                TextView review = (TextView) bankListView.findViewById(R.id.bt_review);
                 bankName.setText(bankList.get(i).getBankName());
                 if (ReviewStatusEnum.REVIEW_WAIT.getValue().equals(bankList.get(i).getBankReviewStatus())) {
-                    status.setVisibility(View.GONE);
-                } else {
-                    review.setVisibility(View.GONE);
-                    status.setText(ReviewStatusEnum.get(bankList.get(i).getBankReviewStatus()).getText());
+                    status.setTextColor(getResources().getColor(R.color.red));
                 }
+                status.setText(ReviewStatusEnum.get(bankList.get(i).getBankReviewStatus()).getText());
                 ImageLoader.getInstance().displayImage(bankList.get(i).getLogoUrl(), icon, KnetConstants.options);
                 RelativeLayout.LayoutParams relLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                         DeviceUtils.dp2px(ReviewSealBaseInfoActivity.this, 50));
@@ -151,5 +149,17 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 获取详情
+     * @param view
+     */
+    public void getDetail(View view){
+        // 跳转下户界面
+        BankInfo bankInfo = (BankInfo) view.getTag();
+        EventBus.getDefault().register(new ReviewFilesActivity());
+        EventBus.getDefault().post(new ObjectMsgEvent(bankInfo));
+        startActivity(new Intent(ReviewSealBaseInfoActivity.this,ReviewFilesActivity.class));
     }
 }

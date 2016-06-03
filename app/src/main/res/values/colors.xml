@@ -5,6 +5,9 @@
     <color name="colorPrimaryDark">#225991</color>
     <color name="colorAccent">#009688</color>
     <!-- common -->
+    <color name="red">#F00</color>
+
+
     <!-- 主题色 -->
     <color name="base_app">#2E7BC9</color>
     <!-- 输入框、默认背景色 -->
@@ -15,6 +18,7 @@
     <color name="white_pressed">#D9DFE6</color>
     <!-- 文字颜色 -->
     <color name="text_color">#353535</color>
+    <color name="text_color_orange">#F79700</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

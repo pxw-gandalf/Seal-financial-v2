@@ -45,7 +45,9 @@
 
         <service android:name=".service.DownloadService" />
 
-        <activity android:name=".ui.activity.ReviewSealBaseInfoActivity"></activity>
+        <activity android:name=".ui.activity.ReviewSealBaseInfoActivity" />
+        <activity android:name=".ui.activity.ReviewActivity" />
+        <activity android:name=".ui.activity.ReviewFilesActivity"></activity>
     </application>
 
 </manifest>
