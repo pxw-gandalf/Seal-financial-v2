@@ -26,15 +26,15 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.android.support:design:23.2.1'
     compile 'com.lzy.widget:view-core:0.1.5'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.code.gson:gson:2.4'
     // 自定义button样式
     compile 'com.github.rey5137:material:1.2.2'
     compile project(':library')

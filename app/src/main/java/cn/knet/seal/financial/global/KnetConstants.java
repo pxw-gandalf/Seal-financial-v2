@@ -38,6 +38,7 @@ public class KnetConstants {
     public static final String PWD = "pwd";
     public static final String PERMISSION = "permission";
     public static final String IS_LOGIN = "isLogin";
+    public static final String IS_EXIST_REVIEWED_BANK = "isExistReviewedBank";
     public static final String DB_NAME = "upload.db";
 
     /** 首页头部 */

@@ -49,6 +49,7 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
     private TextView mTvReviewDetailDate;
     /** 银行列表容器 */
     private LinearLayout mLlBankListContainer;
+    private boolean isExistReviewedBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
 //                TextView review = (TextView) bankListView.findViewById(R.id.bt_review);
                 bankName.setText(bankList.get(i).getBankName());
                 if (ReviewStatusEnum.REVIEW_WAIT.getValue().equals(bankList.get(i).getBankReviewStatus())) {
-                    status.setTextColor(getResources().getColor(R.color.red));
+                    status.setTextColor(getResources().getColor(R.color.text_color_orange));
                 }
                 status.setText(ReviewStatusEnum.get(bankList.get(i).getBankReviewStatus()).getText());
                 ImageLoader.getInstance().displayImage(bankList.get(i).getLogoUrl(), icon, KnetConstants.options);
@@ -119,6 +120,9 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
                         DeviceUtils.dp2px(ReviewSealBaseInfoActivity.this, 50));
                 bankListView.setTag(bankList.get(i));
                 mLlBankListContainer.addView(bankListView, relLayoutParams);
+                if(bankList.get(i).getBankReviewStatus().equals(ReviewStatusEnum.REVIEW_WAIT.getValue())){
+                    isExistReviewedBank = true;
+                }
             }
         }
     }
@@ -160,6 +164,8 @@ public class ReviewSealBaseInfoActivity extends BaseActivity {
         BankInfo bankInfo = (BankInfo) view.getTag();
         EventBus.getDefault().register(new ReviewFilesActivity());
         EventBus.getDefault().post(new ObjectMsgEvent(bankInfo));
-        startActivity(new Intent(ReviewSealBaseInfoActivity.this,ReviewFilesActivity.class));
+        Intent intent = new Intent(ReviewSealBaseInfoActivity.this,ReviewFilesActivity.class);
+        intent.putExtra(KnetConstants.IS_EXIST_REVIEWED_BANK,isExistReviewedBank);
+        startActivity(intent);
     }
 }

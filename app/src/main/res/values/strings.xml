@@ -34,6 +34,7 @@
     <string name="review_remark">下户建议</string>
     <string name="review_file_list">下户资料</string>
     <string name="review_waite_mark">(待录入)</string>
+    <string name="review_use_exist_data">使用已有下户内容</string>
 
     <!-- 进度 -->
     <string name="schedule_title">进度</string>

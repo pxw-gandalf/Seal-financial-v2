@@ -86,8 +86,6 @@ public class MainActivity extends BaseActivity {
         if (supportActionBar != null) {
             supportActionBar.setDisplayShowTitleEnabled(false);
         }
-        toolbar.setTitle("金融助手");
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white_pressed));
     }
 
     private void initUI() {
