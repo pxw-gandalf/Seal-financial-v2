@@ -32,6 +32,9 @@ import cn.knet.seal.financial.ui.adapter.HomeAdapter;
 import cn.knet.seal.financial.ui.widget.DividerItemDecoration;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -49,7 +52,7 @@ import okhttp3.Response;
  */
 public class HomeFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
-    private PullToRefreshView mPullToRefreshView;
+    private PtrFrameLayout mPullToRefreshView;
     private RecyclerView mRvHome;
     private HomeAdapter mHomeAdapter;
     private List<ReviewInfo> mReviewList;
@@ -76,24 +79,35 @@ public class HomeFragment extends Fragment {
     }
 
     private void initUI(View view) {
-        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.ptf_home);
+        mPullToRefreshView = (PtrFrameLayout) view.findViewById(R.id.store_house_ptr_frame);
         mRvHome = (RecyclerView) view.findViewById(R.id.rv_home_fragment);
         mRvHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRvHome.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL_LIST));
-        mPullToRefreshView.setOnRefreshListener(new RefreshListener());
-        mPullToRefreshView.setAutoRefresh();
+
+        mPullToRefreshView.setPtrHandler(new PtrHandler() {
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                refreshNewData();
+            }
+        });
+        mPullToRefreshView.autoRefresh();
     }
 
     /**
      * 刷新
      */
-    class RefreshListener implements PullToRefreshView.OnRefreshListener {
+/*    class RefreshListener implements PullToRefreshView.OnRefreshListener {
         @Override
         public void onRefresh() {
             refreshNewData();
         }
-    }
+    }*/
 
     private void refreshNewData() {
         ReviewListRequest reviewListRequest = new ReviewListRequest();
@@ -121,13 +135,13 @@ public class HomeFragment extends Fragment {
                                 }
                             });
                         }
-                        mPullToRefreshView.setRefreshing(false);
+                        mPullToRefreshView.refreshComplete();
                     }
 
                     @Override
                     public void onAfter(boolean isFromCache, @Nullable ReviewListResponse reviewListResponse, Call call, @Nullable Response response, @Nullable Exception e) {
                         super.onAfter(isFromCache, reviewListResponse, call, response, e);
-                        mPullToRefreshView.setRefreshing(false);
+                        mPullToRefreshView.refreshComplete();
                     }
                 });
     }

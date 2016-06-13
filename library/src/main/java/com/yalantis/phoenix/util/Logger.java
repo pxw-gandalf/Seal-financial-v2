@@ -11,7 +11,7 @@ public final class Logger {
      */
     private static boolean logEnabled_d = false;
     private static boolean logEnabled_i = false;
-    private static boolean logEnabled_e = false;
+    private static boolean logEnabled_e = true;
 
     public static void d() {
         if (logEnabled_d) {

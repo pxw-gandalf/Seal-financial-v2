@@ -16,6 +16,10 @@ import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.ui.adapter.MyItemRecyclerViewAdapter;
 import cn.knet.seal.financial.ui.fragment.dummy.DummyContent;
 import cn.knet.seal.financial.ui.fragment.dummy.DummyContent.DummyItem;
+import cn.knet.seal.financial.util.ToastUtil;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 
 /**
  * A fragment representing a list of Items.
@@ -30,7 +34,7 @@ public class UploadListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    private PullToRefreshView mPullToRefreshView;
+    private PtrFrameLayout mPtf;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -75,18 +79,19 @@ public class UploadListFragment extends Fragment {
             recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
 
-        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.ptf_upload_list);
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+        mPtf = (PtrFrameLayout) view.findViewById(R.id.ptf_upload_list);
+        mPtf.setPtrHandler(new PtrHandler() {
             @Override
-            public void onRefresh() {
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                }, 1500);
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return true;
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                ToastUtil.showToast("refresh");
             }
         });
+        mPtf.autoRefresh();
 
         return view;
     }

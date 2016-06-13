@@ -2,6 +2,7 @@ package com.yalantis.phoenix;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
@@ -268,6 +269,9 @@ public class PullToRefreshView extends ViewGroup {
         mAnimateToCorrectPosition.setDuration(MAX_OFFSET_ANIMATION_DURATION);
         mAnimateToCorrectPosition.setInterpolator(mDecelerateInterpolator);
         mRefreshView.clearAnimation();
+        /*mRefreshView.setBackgroundResource(R.drawable.earth_anim);
+        AnimationDrawable drawable = (AnimationDrawable) mRefreshView.getBackground();
+        drawable.start();*/
         mRefreshView.startAnimation(mAnimateToCorrectPosition);
 
         if (mRefreshing) {

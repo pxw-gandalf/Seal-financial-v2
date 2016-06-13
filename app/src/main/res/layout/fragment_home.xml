@@ -1,25 +1,18 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<in.srain.cube.views.ptr.PtrFrameLayout
+    android:id="@+id/store_house_ptr_frame"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/base_bg"
-    tools:context="cn.knet.seal.financial.ui.fragment.HomeFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.yalantis.phoenix.PullToRefreshView
-        android:id="@+id/ptf_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_home_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            tools:context=".ui.fragment.HomeFragment"
-            />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rv_home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".ui.fragment.HomeFragment"
+    />
 
-    </com.yalantis.phoenix.PullToRefreshView>
-
-</LinearLayout>
+</in.srain.cube.views.ptr.PtrFrameLayout>

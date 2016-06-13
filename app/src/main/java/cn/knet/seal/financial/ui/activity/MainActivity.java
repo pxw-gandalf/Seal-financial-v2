@@ -1,14 +1,23 @@
 package cn.knet.seal.financial.ui.activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.lzy.widget.AlphaIndicator;
 
@@ -24,6 +33,7 @@ import cn.knet.seal.financial.ui.fragment.MoreFragment;
 import cn.knet.seal.financial.ui.fragment.UploadListFragment;
 import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
 import cn.knet.seal.financial.util.DialogHelp;
+import cn.knet.seal.financial.util.ToastUtil;
 
 /**
  * 主函数，默认加载首页
@@ -37,11 +47,15 @@ import cn.knet.seal.financial.util.DialogHelp;
  * @update:
  *
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Toolbar toolbar;
     private DoubleClickExitHelper mDoubleClick;
     private UploadDBHelper mUploadDBHelper;
+    private LinearLayout mLlLocation;
+    private ImageView mIvLocation;
+    private FrameLayout mFlNotice;
+    private ImageView mIvRed;
+    private TextView mTvLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +65,6 @@ public class MainActivity extends BaseActivity {
         initUI();
         // 检查是否有待上传数据
         checkUnUploadData();
-    }
-
-    @Override
-    void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setToolBar();
     }
 
     @Override
@@ -81,14 +88,16 @@ public class MainActivity extends BaseActivity {
      * toolbar参数
      */
     private void setToolBar() {
-        // 屏蔽默认标题
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setDisplayShowTitleEnabled(false);
-        }
+        mLlLocation = (LinearLayout) findViewById(R.id.ll_location);
+        mTvLocation = (TextView) findViewById(R.id.tv_main_location);
+        mIvLocation = (ImageView) findViewById(R.id.iv_main_location);
+        mFlNotice = (FrameLayout) findViewById(R.id.fl_notice);
+        mIvRed = (ImageView) findViewById(R.id.iv_red);
     }
 
     private void initUI() {
+        setToolBar();
+
         mDoubleClick = new DoubleClickExitHelper(this);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new MainAdapter(getSupportFragmentManager()));
@@ -97,6 +106,18 @@ public class MainActivity extends BaseActivity {
         alphaIndicator.setViewPager(viewPager);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ll_location:
+                ToastUtil.showToast("location");
+                break;
+            case R.id.fl_notice:
+                ToastUtil.showToast("notice");
+                break;
+        }
     }
 
     private class MainAdapter extends FragmentPagerAdapter {

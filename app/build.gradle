@@ -40,4 +40,5 @@ dependencies {
     compile project(':library')
     compile project(':okhttpserver')
     compile project(':okhttputils')
+    compile project(':ptr-lib')
 }
