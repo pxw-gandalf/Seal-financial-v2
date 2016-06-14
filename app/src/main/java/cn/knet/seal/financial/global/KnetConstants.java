@@ -47,6 +47,8 @@ public class KnetConstants {
     public static final int VIEW_TYPE_HOME_OPERATE = 0x4B000002;
     /** 下户列表 */
     public static final int VIEW_TYPE_HOME_LIST = 0x4B000003;
+    /** 最新待接单提示 */
+    public static final int VIEW_TYPE_HOME_TIPS = 0x4B000004;
 
 
     /**

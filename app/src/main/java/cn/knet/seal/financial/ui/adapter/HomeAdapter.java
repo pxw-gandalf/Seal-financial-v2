@@ -2,6 +2,7 @@ package cn.knet.seal.financial.ui.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.List;
 
@@ -53,6 +55,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return KnetConstants.VIEW_TYPE_HOME_HEADER;
         }else if(position == 1){
             return KnetConstants.VIEW_TYPE_HOME_OPERATE;
+        }else if(position == 2){
+            return KnetConstants.VIEW_TYPE_HOME_TIPS;
         }else{
             return KnetConstants.VIEW_TYPE_HOME_LIST;
         }
@@ -69,6 +73,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             view = LayoutInflater.from(context).inflate(R.layout.fragment_home_operate,
                     parent, false);
             return new MyOperateHolder(view);
+        } else if(viewType == KnetConstants.VIEW_TYPE_HOME_TIPS){
+            view = LayoutInflater.from(context).inflate(R.layout.fragment_home_tip,parent, false);
+            return new MyTipHolder(view);
         } else if (viewType == KnetConstants.VIEW_TYPE_HOME_LIST) {
             view = LayoutInflater.from(context).inflate(R.layout.fragment_home_item,
                     parent, false);
@@ -84,8 +91,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
             case KnetConstants.VIEW_TYPE_HOME_OPERATE:
                 break;
+            case KnetConstants.VIEW_TYPE_HOME_TIPS:
+                break;
             case KnetConstants.VIEW_TYPE_HOME_LIST:
-                final ReviewInfo reviewInfo = reviewList.get(position - 2);
+                final ReviewInfo reviewInfo = reviewList.get(position - 3);
                 if(null != reviewInfo){
                     ((MyListViewHolder) holder).tvBankCount.setText(null == reviewInfo.getBankList() ? 0 + "" : reviewInfo.getBankList().size() + "");
                     ((MyListViewHolder) holder).tvReviewAddress.setText(reviewInfo.getAddress());
@@ -138,7 +147,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return reviewList.size() + 2;
+        return reviewList.size() + 3;
     }
 
     /**
@@ -213,6 +222,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class MyOperateHolder extends RecyclerView.ViewHolder{
 
         public MyOperateHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    class MyTipHolder extends RecyclerView.ViewHolder{
+
+        public MyTipHolder(View itemView) {
             super(itemView);
         }
     }

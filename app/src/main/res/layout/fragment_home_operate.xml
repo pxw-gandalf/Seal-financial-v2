@@ -4,7 +4,10 @@
     android:layout_height="wrap_content"
     android:background="@drawable/item_press_selector"
     android:descendantFocusability="blocksDescendants"
-    android:padding="12dp">
+    android:layout_marginBottom="20dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    >
 
     <LinearLayout
         android:id="@+id/ll_home_review"
@@ -16,13 +19,15 @@
         >
         <ImageView
             android:id="@+id/iv_home_review"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/v1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/home_review"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color"
             android:text="@string/review_title"
             android:layout_marginTop="5dp"
             />
@@ -37,14 +42,38 @@
         >
         <ImageView
             android:id="@+id/iv_home_schedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/v2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/home_progress"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color"
             android:text="@string/schedule_title"
+            android:layout_marginTop="5dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:id="@+id/iv_home_customer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/home_customer"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color"
+            android:text="客户筛查"
             android:layout_marginTop="5dp"
             />
     </LinearLayout>
@@ -58,37 +87,20 @@
         >
         <ImageView
             android:id="@+id/iv_home_wuliu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/v3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/home_express"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color"
             android:text="@string/wuliu_title"
             android:layout_marginTop="5dp"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        >
-        <ImageView
-            android:id="@+id/iv_home_customer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/v4"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="客户筛查"
-            android:layout_marginTop="5dp"
-            />
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -98,14 +110,16 @@
         >
         <ImageView
             android:id="@+id/iv_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/v5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/home_nearby"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="周边"
+            android:textSize="12sp"
+            android:textColor="@color/text_color"
+            android:text="@string/nearby"
             android:layout_marginTop="5dp"
             />
     </LinearLayout>

@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lzy.okhttputils.OkHttpUtils;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.api.KnetFinancialHttpApi;
@@ -23,6 +22,10 @@ import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.global.KnetConstants;
 import cn.knet.seal.financial.global.ObjectMsgEvent;
 import de.greenrobot.event.EventBus;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrCustomerAnimHeader;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -30,21 +33,20 @@ import okhttp3.Response;
 /**
  * 新建的下户操作列表
  * 所有操作不在同一个列表下展示，都跳转至下一页面
- *
+ * <p/>
  * ClassName: ReviewFilesActivity <br/>
  * Date: 2016/6/6 14:09 <br/>
  *
  * @author: peixinwen@knet.cn
  * @version:
- * @since 1.0
  * @update:
- *
+ * @since 1.0
  */
 public class ReviewFilesActivity extends BaseActivity {
     private static final String TAG = ReviewFilesActivity.class.getSimpleName();
     private static BankInfo mBankInfo;
 
-    private PullToRefreshView mPtf;
+    private PtrClassicFrameLayout mPtf;
     private LinearLayout mLlReviewPics;
     private TextView mTvReviewPicCount;
     private LinearLayout mLlReviewAudio;
@@ -60,7 +62,7 @@ public class ReviewFilesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_files);
-        isExistReviewedBank = getIntent().getBooleanExtra(KnetConstants.IS_EXIST_REVIEWED_BANK,false);
+        isExistReviewedBank = getIntent().getBooleanExtra(KnetConstants.IS_EXIST_REVIEWED_BANK, false);
 
         initUI();
 
@@ -75,19 +77,26 @@ public class ReviewFilesActivity extends BaseActivity {
         mTvReviewVideoCount = (TextView) findViewById(R.id.tv_review_video_count);
         mLlReviewRemark = (LinearLayout) findViewById(R.id.ll_review_remark);
         mTvReviewRemark = (TextView) findViewById(R.id.tv_review_remark);
-        mPtf = (PullToRefreshView) findViewById(R.id.ptf_review_files);
+        mPtf = (PtrClassicFrameLayout) findViewById(R.id.ptf_review_files);
         mRlReviewExistBar = (RelativeLayout) findViewById(R.id.rl_review_exist_bar);
-        mPtf.setOnRefreshListener(new MyRefreshListener());
-        mPtf.setAutoRefresh();
+
+        PtrCustomerAnimHeader header = new PtrCustomerAnimHeader(this);
+        mPtf.setHeaderView(header);
+        mPtf.addPtrUIHandler(header);
+        mPtf.setPtrHandler(new PtrHandler() {
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return true;
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                getReviewDetailInfo();
+            }
+        });
+        mPtf.autoRefresh();
     }
 
-    class MyRefreshListener implements PullToRefreshView.OnRefreshListener {
-
-        @Override
-        public void onRefresh() {
-            getReviewDetailInfo();
-        }
-    }
 
     @Override
     void initToolbar() {
@@ -121,12 +130,12 @@ public class ReviewFilesActivity extends BaseActivity {
                 mBankInfo.getBankReviewStatus().equals(ReviewStatusEnum.REVIEW_MODIFY.getValue())
                 ) {
             // TODO: 2016/6/3 本地扫描
-            if(isExistReviewedBank){
+            if (isExistReviewedBank) {
                 mRlReviewExistBar.setVisibility(View.VISIBLE);
                 mRlReviewExistBar.setOnClickListener(new ChoiceExistReviewDataListener());
             }
 
-            mPtf.setRefreshing(false);
+            mPtf.refreshComplete();
 
         } else {
             // 从服务器获取该贷款机构的下户数据信息
@@ -153,13 +162,14 @@ public class ReviewFilesActivity extends BaseActivity {
                         @Override
                         public void onAfter(boolean isFromCache, @Nullable ReviewInfoDetailResponse reviewInfoDetailResponse, Call call, @Nullable Response response, @Nullable Exception e) {
                             super.onAfter(isFromCache, reviewInfoDetailResponse, call, response, e);
-                            mPtf.setRefreshing(false);
+                            mPtf.refreshComplete();
                         }
                     });
         }
 
     }
-    class ChoiceExistReviewDataListener implements View.OnClickListener{
+
+    class ChoiceExistReviewDataListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {

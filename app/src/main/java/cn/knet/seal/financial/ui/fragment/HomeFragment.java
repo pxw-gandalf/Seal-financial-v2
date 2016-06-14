@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.lzy.okhttputils.OkHttpUtils;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.List;
 
@@ -26,12 +25,12 @@ import cn.knet.seal.financial.bean.response.ReviewListResponse;
 import cn.knet.seal.financial.global.BaseHeader;
 import cn.knet.seal.financial.global.MyItemClickListener;
 import cn.knet.seal.financial.global.ObjectMsgEvent;
-import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.ui.activity.ReviewSealBaseInfoActivity;
 import cn.knet.seal.financial.ui.adapter.HomeAdapter;
 import cn.knet.seal.financial.ui.widget.DividerItemDecoration;
-import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrCustomerAnimHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -52,7 +51,7 @@ import okhttp3.Response;
  */
 public class HomeFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
-    private PtrFrameLayout mPullToRefreshView;
+    private PtrClassicFrameLayout mPtf;
     private RecyclerView mRvHome;
     private HomeAdapter mHomeAdapter;
     private List<ReviewInfo> mReviewList;
@@ -79,13 +78,16 @@ public class HomeFragment extends Fragment {
     }
 
     private void initUI(View view) {
-        mPullToRefreshView = (PtrFrameLayout) view.findViewById(R.id.store_house_ptr_frame);
+        mPtf = (PtrClassicFrameLayout) view.findViewById(R.id.ptf_home_fragment);
         mRvHome = (RecyclerView) view.findViewById(R.id.rv_home_fragment);
         mRvHome.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRvHome.addItemDecoration(new DividerItemDecoration(getActivity(),
-                DividerItemDecoration.VERTICAL_LIST));
+        /*mRvHome.addItemDecoration(new DividerItemDecoration(getActivity(),
+                DividerItemDecoration.VERTICAL_LIST));*/
 
-        mPullToRefreshView.setPtrHandler(new PtrHandler() {
+        PtrCustomerAnimHeader header = new PtrCustomerAnimHeader(getActivity());
+        mPtf.setHeaderView(header);
+        mPtf.addPtrUIHandler(header);
+        mPtf.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
@@ -96,7 +98,7 @@ public class HomeFragment extends Fragment {
                 refreshNewData();
             }
         });
-        mPullToRefreshView.autoRefresh();
+        mPtf.autoRefresh();
     }
 
     /**
@@ -135,13 +137,13 @@ public class HomeFragment extends Fragment {
                                 }
                             });
                         }
-                        mPullToRefreshView.refreshComplete();
+                        mPtf.refreshComplete();
                     }
 
                     @Override
                     public void onAfter(boolean isFromCache, @Nullable ReviewListResponse reviewListResponse, Call call, @Nullable Response response, @Nullable Exception e) {
                         super.onAfter(isFromCache, reviewListResponse, call, response, e);
-                        mPullToRefreshView.refreshComplete();
+                        mPtf.refreshComplete();
                     }
                 });
     }

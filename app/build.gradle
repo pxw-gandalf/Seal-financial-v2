@@ -37,7 +37,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     // 自定义button样式
     compile 'com.github.rey5137:material:1.2.2'
-    compile project(':library')
     compile project(':okhttpserver')
     compile project(':okhttputils')
     compile project(':ptr-lib')

@@ -75,9 +75,37 @@ containing a value of this type.
         public static int ptr_rotate_ani_time=0x7f010000;
     }
     public static final class drawable {
-        public static int ptr_rotate_arrow=0x7f020000;
+        public static int a0001=0x7f020000;
+        public static int a0003=0x7f020001;
+        public static int a0005=0x7f020002;
+        public static int a0007=0x7f020003;
+        public static int a0009=0x7f020004;
+        public static int a0011=0x7f020005;
+        public static int a0013=0x7f020006;
+        public static int a0015=0x7f020007;
+        public static int a0017=0x7f020008;
+        public static int a0019=0x7f020009;
+        public static int a0021=0x7f02000a;
+        public static int a0023=0x7f02000b;
+        public static int a0025=0x7f02000c;
+        public static int a0027=0x7f02000d;
+        public static int a0029=0x7f02000e;
+        public static int a0031=0x7f02000f;
+        public static int a0033=0x7f020010;
+        public static int a0035=0x7f020011;
+        public static int a0037=0x7f020012;
+        public static int a0039=0x7f020013;
+        public static int a0041=0x7f020014;
+        public static int a0043=0x7f020015;
+        public static int a0045=0x7f020016;
+        public static int a0047=0x7f020017;
+        public static int a0049=0x7f020018;
+        public static int bg=0x7f020019;
+        public static int earth_anim=0x7f02001a;
+        public static int ptr_rotate_arrow=0x7f02001b;
     }
     public static final class id {
+        public static int iv_earth=0x7f050005;
         public static int ptr_classic_header_rotate_view=0x7f050003;
         public static int ptr_classic_header_rotate_view_header_last_update=0x7f050002;
         public static int ptr_classic_header_rotate_view_header_text=0x7f050000;
@@ -87,6 +115,7 @@ containing a value of this type.
     public static final class layout {
         public static int cube_ptr_classic_default_header=0x7f030000;
         public static int cube_ptr_simple_loading=0x7f030001;
+        public static int customer_header=0x7f030002;
     }
     public static final class string {
         public static int cube_ptr_hours_ago=0x7f040000;

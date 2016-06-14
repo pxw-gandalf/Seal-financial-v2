@@ -22,6 +22,9 @@
     <string name="login">登 录</string>
     <string name="login_waiting">登录中,请稍后...</string>
     <string name="home_exit_unUpload_task">检测到有未上传的下户数据，是否继续上传?</string>
+    <string name="home_wait_review">待下户(个)</string>
+    <string name="home_wait_modify">待修改(个)</string>
+    <string name="home_new_tip">最新待接单</string>
 
     <!-- 下户 -->
     <string name="review_take_order">接单</string>
@@ -37,13 +40,15 @@
     <string name="review_use_exist_data">使用已有下户内容</string>
 
     <!-- 进度 -->
-    <string name="schedule_title">进度</string>
+    <string name="schedule_title">进度查询</string>
 
     <!-- 物流 -->
-    <string name="wuliu_title">物流</string>
+    <string name="wuliu_title">物流录入</string>
 
     <!-- 上传 -->
     <string name="upload_bar">传输列表</string>
+
+    <string name="nearby">查找周边</string>
 
     <!-- 更多 -->
     <string name="more_bar">更多</string>
@@ -86,5 +91,6 @@
     <string name="title_activity_app_start">AppStartActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_more_help">MoreHelpActivity</string>
+
 
 </resources>

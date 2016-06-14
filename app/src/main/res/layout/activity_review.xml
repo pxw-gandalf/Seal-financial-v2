@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.knet.seal.financial.ui.activity.ReviewActivity">
+    tools:context=".ui.activity.ReviewActionActivity">
 
 </RelativeLayout>

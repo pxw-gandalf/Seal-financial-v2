@@ -28,12 +28,14 @@ import cn.knet.seal.financial.R;
 import cn.knet.seal.financial.db.UploadDBHelper;
 import cn.knet.seal.financial.global.KnetAppManager;
 import cn.knet.seal.financial.global.KnetConstants;
+import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.ui.fragment.HomeFragment;
 import cn.knet.seal.financial.ui.fragment.MoreFragment;
 import cn.knet.seal.financial.ui.fragment.UploadListFragment;
 import cn.knet.seal.financial.ui.widget.DoubleClickExitHelper;
 import cn.knet.seal.financial.util.DialogHelp;
 import cn.knet.seal.financial.util.ToastUtil;
+import de.greenrobot.event.EventBus;
 
 /**
  * 主函数，默认加载首页
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
     private void checkUnUploadData() {
@@ -148,6 +153,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return mDoubleClick.onKeyDown(keyCode, event);
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void onEventMainThread(StringMsgEvents stringMsgEvents){
+        ToastUtil.showToast(stringMsgEvents.getMsg());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
 }

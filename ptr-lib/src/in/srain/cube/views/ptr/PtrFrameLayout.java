@@ -3,6 +3,7 @@ package in.srain.cube.views.ptr;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.*;
 import android.widget.Scroller;
 import android.widget.TextView;
@@ -79,7 +80,6 @@ public class PtrFrameLayout extends ViewGroup {
 
     public PtrFrameLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
         mPtrIndicator = new PtrIndicator();
 
         TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.PtrFrameLayout, 0, 0);
@@ -360,6 +360,9 @@ public class PtrFrameLayout extends ViewGroup {
         }
 
         int to = mPtrIndicator.getCurrentPosY() + (int) deltaY;
+        if(to > mHeaderHeight){
+            to = mHeaderHeight;
+        }
 
         // over top
         if (mPtrIndicator.willOverTop(to)) {

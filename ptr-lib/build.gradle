@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '23.0.3'
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 21
+        targetSdkVersion 22
     }
 
     lintOptions {
@@ -30,4 +30,3 @@ android {
 
 dependencies {
 }
-//apply from: './gradle-mvn-push.gradle'

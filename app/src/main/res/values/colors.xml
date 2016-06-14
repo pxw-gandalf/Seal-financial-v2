@@ -9,11 +9,12 @@
 
 
     <!-- 主题色 -->
-    <color name="base_app">#2E7BC9</color>
+    <color name="base_app">#3C94EF</color>
     <!-- 输入框、默认背景色 -->
     <color name="base_bg">#eeecf3</color>
     <!-- 边框、分割线 -->
-    <color name="base_stroke">#dadada</color>
+    <color name="base_stroke">#f5f5f5</color>
+    <color name="base_stroke_deep">#f0f0f0</color>
     <!-- 按下颜色 -->
     <color name="white_pressed">#D9DFE6</color>
     <!-- 文字颜色 -->

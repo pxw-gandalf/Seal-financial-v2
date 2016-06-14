@@ -42,4 +42,16 @@ public class PtrLocalDisplay {
     public static void setPadding(final View view, float left, float top, float right, float bottom) {
         view.setPadding(designedDP2px(left), dp2px(top), designedDP2px(right), dp2px(bottom));
     }
+
+    public static float getScreenWidth(Context context) {
+        return getDisplayMetrics(context).widthPixels;
+    }
+
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((WindowManager) context.getSystemService(
+                Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(
+                displaymetrics);
+        return displaymetrics;
+    }
 }
