@@ -6,6 +6,8 @@ import android.os.Environment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.knet.seal.financial.R;
 import de.greenrobot.event.EventBus;
@@ -40,6 +42,8 @@ public class KnetConstants {
     public static final String IS_LOGIN = "isLogin";
     public static final String IS_EXIST_REVIEWED_BANK = "isExistReviewedBank";
     public static final String DB_NAME = "upload.db";
+    public static final int REVIEW_MAX_PHOTO_SIZE = 10;
+
 
     /** 首页头部 */
     public static final int VIEW_TYPE_HOME_HEADER = 0x4B000001;
@@ -49,7 +53,10 @@ public class KnetConstants {
     public static final int VIEW_TYPE_HOME_LIST = 0x4B000003;
     /** 最新待接单提示 */
     public static final int VIEW_TYPE_HOME_TIPS = 0x4B000004;
-
+    /** 下户照片展示 */
+    public static final int VIEW_TYPE_REVIEW_SHOW_PHOTO = 0x4B000005;
+    /** 下户照片拍摄 */
+    public static final int VIEW_TYPE_REVIEW_TAKE_PHOTO = 0x4B000006;
 
     /**
      * 获取项目根cache目录，位于外置存储
@@ -69,6 +76,75 @@ public class KnetConstants {
         }
         return Environment.getExternalStorageDirectory() + File.separator + baseCache;
     }
+
+    /**
+     * 下户数据缓存目录
+     * @param save
+     * @return
+     */
+    public static String getReviewCacheDir(boolean save){
+        String reviewCache = "review_cache";
+        if(save){
+            return getBaseCacheDir(true) + File.separator + reviewCache;
+        }
+        return getBaseCacheDir(false) + File.separator + reviewCache;
+    }
+
+    /**
+     * 获取下户照片存储路径
+     * @param save
+     * @param orderId 可信贷订单id
+     * @param bankId  银行id
+     * @return 路径
+     */
+    public static String getReviewImageCache(boolean save, String orderId ,String bankId){
+        String path =  getReviewCacheDir(save)
+                + File.separator + orderId
+                + File.separator + bankId
+                + File.separator + "image";
+        File file = new File(path);
+        if(save && !file.exists()){
+            file.mkdirs();
+        }
+        return path;
+    }
+
+    /**
+     * 大图存储路径
+     * @param save
+     * @param orderId
+     * @param bankId
+     * @return
+     */
+    public static String getReviewBigImageCache(boolean save,String photoType, String orderId ,String bankId){
+        String path = getReviewImageCache(save,orderId,bankId)
+                + File.separator + photoType
+                + File.separator + "big";
+        File file = new File(path);
+        if(save && !file.exists()){
+            file.mkdirs();
+        }
+        return path;
+    }
+
+    /**
+     * 小图存储路径
+     * @param save
+     * @param orderId
+     * @param bankId
+     * @return
+     */
+    public static String getReviewSmallImageCache(boolean save,String photoType, String orderId ,String bankId){
+        String path = getReviewImageCache(save,orderId,bankId)
+                + File.separator + photoType
+                + File.separator + "small";
+        File file = new File(path);
+        if(save && !file.exists()){
+            file.mkdirs();
+        }
+        return path;
+    }
+
 
     /**
      * 创建项目根cache目录

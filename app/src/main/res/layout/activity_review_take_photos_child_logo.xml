@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="cn.knet.seal.financial.ui.activity.ReviewTakePhotosActivity">
+
+    <ImageView
+        android:id="@+id/iv_review_take_photo_logo"
+        android:src="@mipmap/camera"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="5dp"
+        android:padding="15dp"
+        android:background="@drawable/image_frame"
+        />
+
+</RelativeLayout>

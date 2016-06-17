@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import cn.knet.seal.financial.R;
+import cn.knet.seal.financial.global.KnetAppManager;
 import cn.knet.seal.financial.global.StringMsgEvents;
 import cn.knet.seal.financial.util.ToastUtil;
 import de.greenrobot.event.EventBus;
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
+        KnetAppManager.getAppManager().addActivity(this);
         initToolbar();
     }
 

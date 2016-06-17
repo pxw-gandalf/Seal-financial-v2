@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
                                 public void onItemClick(View view, int position) {
                                     // 对于在后创建的类中，要先进行注册
                                     EventBus.getDefault().register(new ReviewSealBaseInfoActivity());
-                                    EventBus.getDefault().post(new ObjectMsgEvent((KnetBaseBean) view.getTag()));
+                                    EventBus.getDefault().post(new ObjectMsgEvent((ReviewInfo) view.getTag()));
                                     startActivity(new Intent(getActivity(),ReviewSealBaseInfoActivity.class));
                                 }
                             });

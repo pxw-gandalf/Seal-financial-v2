@@ -1,5 +1,6 @@
 package cn.knet.seal.financial.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -42,7 +43,7 @@ import okhttp3.Response;
  * @update:
  * @since 1.0
  */
-public class ReviewFilesActivity extends BaseActivity {
+public class ReviewFilesActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = ReviewFilesActivity.class.getSimpleName();
     private static BankInfo mBankInfo;
 
@@ -79,6 +80,11 @@ public class ReviewFilesActivity extends BaseActivity {
         mTvReviewRemark = (TextView) findViewById(R.id.tv_review_remark);
         mPtf = (PtrClassicFrameLayout) findViewById(R.id.ptf_review_files);
         mRlReviewExistBar = (RelativeLayout) findViewById(R.id.rl_review_exist_bar);
+
+        mLlReviewPics.setOnClickListener(this);
+        mLlReviewAudio.setOnClickListener(this);
+        mLlReviewVideo.setOnClickListener(this);
+        mLlReviewRemark.setOnClickListener(this);
 
         PtrCustomerAnimHeader header = new PtrCustomerAnimHeader(this);
         mPtf.setHeaderView(header);
@@ -167,6 +173,29 @@ public class ReviewFilesActivity extends BaseActivity {
                     });
         }
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ll_review_pics:
+                // 跳转拍照页面
+                if(mBankInfo.getBankReviewStatus().equals(ReviewStatusEnum.REVIEW_MODIFY.getValue())
+                        || mBankInfo.getBankReviewStatus().equals(ReviewStatusEnum.REVIEW_WAIT.getValue())){
+                    // 拍照页面
+                    EventBus.getDefault().register(new ReviewTakePhotosActivity());
+                    EventBus.getDefault().post(new ObjectMsgEvent(mBankInfo));
+                    startActivity(new Intent(ReviewFilesActivity.this,ReviewTakePhotosActivity.class));
+                }else {
+                    // 显示照片页面
+
+                }
+                break;
+            case R.id.ll_review_audio:
+                break;
+            case R.id.ll_review_video:
+                break;
+        }
     }
 
     class ChoiceExistReviewDataListener implements View.OnClickListener {
